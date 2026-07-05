@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OFF MENU — Welcome Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+--ink:#1C1C1A;--gold:#C9A44A;--gold-lt:#F7F0E0;--gold-dk:#9A6B0A;
+--paper:#FAFAF8;--fog:#EEEAE4;--smoke:#6B6560;--white:#FFFFFF;
+--blue:#EFF6FF;--blue-dk:#1D4ED8;
+--display:'Playfair Display',Georgia,serif;
+--body:'DM Sans',system-ui,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* TOOLBAR */
+.toolbar{position:fixed;bottom:20px;right:20px;z-index:1000;display:flex;gap:8px;flex-direction:column;align-items:flex-end}
+.tb-btn{font-family:var(--body);font-size:11px;padding:8px 14px;border-radius:6px;border:1px solid rgba(255,255,255,.2);background:rgba(28,28,26,.9);color:rgba(255,255,255,.7);cursor:pointer;backdrop-filter:blur(8px);letter-spacing:.04em;white-space:nowrap}
+.tb-btn:hover{background:var(--ink);color:var(--white)}
+.tb-btn.gold{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:600}
+.tb-hint{font-size:10px;color:rgba(255,255,255,.4);text-align:right;padding-right:2px}
+
+/* EDITABLE */
+[contenteditable]{outline:none;cursor:text}
+[contenteditable]:hover{background:rgba(201,164,74,.1);border-radius:2px}
+[contenteditable]:focus{background:rgba(201,164,74,.16);border-radius:2px}
+
+/* GOLD RULE */
+.rule{width:48px;height:1px;background:var(--gold)}
+.rule-center{margin:0 auto}
+
+/* HEADER */
+.hub-header{background:var(--ink);padding:28px 56px;display:flex;align-items:center;justify-content:space-between}
+.hub-brand{font-family:var(--display);font-size:22px;font-weight:700;color:var(--white);letter-spacing:.08em}
+.hub-tag{font-family:var(--body);font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.1em;text-transform:uppercase}
+
+/* WELCOME HERO */
+.welcome{background:var(--ink);padding:64px 56px 72px;text-align:center;border-top:1px solid rgba(255,255,255,.06)}
+.welcome-eyebrow{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.welcome-headline{font-family:var(--display);font-size:clamp(36px,4vw,58px);font-weight:700;font-style:italic;color:var(--white);line-height:1.1;margin-bottom:16px}
+.welcome-headline em{font-style:normal;color:var(--gold)}
+.welcome-rule{width:48px;height:1px;background:var(--gold);margin:28px auto}
+.welcome-sub{font-family:var(--body);font-size:17px;font-weight:300;color:rgba(255,255,255,.55);max-width:560px;margin:0 auto 32px;line-height:1.8}
+.purchase-badge{display:inline-flex;align-items:center;gap:12px;background:rgba(201,164,74,.12);border:1px solid rgba(201,164,74,.25);border-radius:4px;padding:12px 24px}
+.badge-label{font-family:var(--body);font-size:11px;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.1em}
+.badge-product{font-family:var(--display);font-size:16px;font-weight:600;color:var(--gold)}
+
+/* HOW TO START */
+.how-to{background:var(--fog);padding:56px}
+.how-to-inner{max-width:860px;margin:0 auto}
+.section-label{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);margin-bottom:32px}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.step{background:var(--white);padding:28px 24px}
+.step-num{font-family:var(--display);font-size:36px;font-weight:700;color:var(--fog);line-height:1;margin-bottom:12px}
+.step-title{font-family:var(--body);font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.step-desc{font-family:var(--body);font-size:13px;color:var(--smoke);line-height:1.65}
+
+/* PRODUCT SECTIONS */
+.prod-section{padding:72px 56px}
+.prod-section.alt{background:var(--fog)}
+.prod-inner{max-width:860px;margin:0 auto}
+.prod-category{display:flex;align-items:center;gap:16px;margin-bottom:40px}
+.cat-number{font-family:var(--display);font-size:13px;font-weight:400;font-style:italic;color:var(--gold)}
+.cat-divider{flex:1;height:1px;background:var(--gold);opacity:.3}
+.cat-title-block{}
+.cat-eyebrow{font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.cat-headline{font-family:var(--display);font-size:clamp(22px,2.5vw,32px);font-weight:700;color:var(--ink);margin-bottom:8px}
+.cat-desc{font-family:var(--body);font-size:15px;color:var(--smoke);line-height:1.75;max-width:560px;margin-bottom:36px}
+
+/* FILE CARDS */
+.file-card{background:var(--white);border:1px solid var(--fog);border-radius:2px;padding:32px;margin-bottom:12px;border-left:3px solid var(--gold)}
+.file-card.notion{border-left-color:#000}
+.file-card.pdf{border-left-color:var(--smoke)}
+.file-top{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:20px;flex-wrap:wrap}
+.file-info{}
+.file-name{font-family:var(--display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.file-type{font-family:var(--body);font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--smoke)}
+.file-desc{font-family:var(--body);font-size:14px;color:var(--smoke);line-height:1.7;margin-bottom:24px;max-width:520px}
+.file-contents{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:24px}
+.file-contents li{font-family:var(--body);font-size:13px;color:var(--smoke);padding-left:16px;position:relative;line-height:1.5}
+.file-contents li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:11px;top:2px}
+
+/* LINK INPUT GROUP */
+.link-group{background:var(--fog);border-radius:4px;padding:16px 20px}
+.link-label{font-family:var(--body);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--smoke);margin-bottom:8px;display:block}
+.link-row{display:flex;gap:0}
+.link-input{flex:1;font-family:var(--body);font-size:13px;padding:12px 16px;border:1px solid rgba(28,28,26,.12);border-right:none;background:var(--white);color:var(--ink);border-radius:4px 0 0 4px;outline:none}
+.link-input:focus{border-color:var(--gold)}
+.link-input::placeholder{color:rgba(107,101,96,.5)}
+.link-btn{font-family:var(--body);font-size:12px;font-weight:600;padding:12px 20px;background:var(--ink);color:var(--white);border:none;border-radius:0 4px 4px 0;cursor:pointer;letter-spacing:.06em;white-space:nowrap;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:background .2s}
+.link-btn:hover{background:var(--gold-dk)}
+.link-btn.disabled{background:rgba(28,28,26,.3);cursor:not-allowed}
+.link-hint{font-family:var(--body);font-size:11px;color:var(--smoke);margin-top:8px;font-style:italic}
+
+/* NOTION / PDF special */
+.notion-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:#F3F3F3;color:#37352F;margin-left:8px;vertical-align:middle}
+.pdf-tag{display:inline-block;font-size:10px;font-weight:600;padding:2px 8px;border-radius:20px;background:#FEF3C7;color:#92400E;margin-left:8px;vertical-align:middle}
+
+/* BEFORE YOU START */
+.before-start{background:var(--ink);padding:72px 56px}
+.bs-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.bs-title{font-family:var(--display);font-size:clamp(20px,2.5vw,28px);font-weight:700;color:var(--white);margin-bottom:20px}
+.bs-item{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+.bs-dot{width:24px;height:24px;border-radius:50%;background:rgba(201,164,74,.15);border:1px solid rgba(201,164,74,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.bs-dot span{font-size:11px;color:var(--gold)}
+.bs-text{font-family:var(--body);font-size:14px;color:rgba(255,255,255,.6);line-height:1.65}
+.bs-text strong{color:var(--white);font-weight:500}
+
+/* PRODUCT 3 TEASE */
+.p3-tease{background:var(--fog);padding:72px 56px;text-align:center}
+.p3-inner{max-width:600px;margin:0 auto}
+.tease-badge{display:inline-block;font-family:var(--body);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(201,164,74,.4);padding:5px 14px;border-radius:20px;margin-bottom:24px}
+.tease-headline{font-family:var(--display);font-size:clamp(22px,2.5vw,34px);font-weight:700;color:var(--ink);line-height:1.2;margin-bottom:16px}
+.tease-sub{font-family:var(--body);font-size:15px;color:var(--smoke);line-height:1.75;margin-bottom:32px}
+.btn-outline{font-family:var(--body);font-size:12px;font-weight:600;padding:12px 28px;border:1px solid var(--ink);color:var(--ink);border-radius:4px;text-decoration:none;letter-spacing:.06em;text-transform:uppercase;display:inline-block;transition:all .2s}
+.btn-outline:hover{background:var(--ink);color:var(--white)}
+
+/* SUPPORT */
+.support{background:var(--paper);padding:48px 56px}
+.support-inner{max-width:860px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.support-text{}
+.support-title{font-family:var(--display);font-size:18px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.support-desc{font-family:var(--body);font-size:14px;color:var(--smoke)}
+.support-email{font-family:var(--body);font-size:13px;font-weight:600;color:var(--gold-dk);text-decoration:none}
+.support-email:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{background:rgba(10,10,8,1);padding:28px 56px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-brand{font-family:var(--display);font-size:15px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.08em}
+.footer-note{font-family:var(--body);font-size:12px;color:rgba(255,255,255,.2)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hub-header{padding:20px 24px}
+.welcome{padding:48px 24px 56px}
+.how-to{padding:40px 24px}.steps-grid{grid-template-columns:1fr}
+.prod-section{padding:48px 24px}
+.bs-inner{grid-template-columns:1fr;gap:32px}
+.p3-tease,.support{padding:48px 24px}
+footer{padding:24px;flex-direction:column;text-align:center}
+.support-inner{flex-direction:column}
+.file-top{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- TOOLBAR -->
+<div class="toolbar">
+  <div class="tb-hint">Paste your links → click Save</div>
+  <button class="tb-btn" onclick="saveHTML()">Save with links</button>
+  <button class="tb-btn gold" onclick="window.print()">Print / Export PDF</button>
+</div>
+
+<!-- HEADER -->
+<div class="hub-header">
+  <div class="hub-brand" contenteditable="true">OFF MENU</div>
+  <div class="hub-tag" contenteditable="true">Personal Welcome Hub — do not share this page</div>
+</div>
+
+<!-- WELCOME HERO -->
+<section class="welcome">
+  <div class="welcome-eyebrow" contenteditable="true">Purchase confirmed</div>
+  <h1 class="welcome-headline" contenteditable="true">Welcome to<br><em>OFF MENU.</em></h1>
+  <div class="welcome-rule"></div>
+  <p class="welcome-sub" contenteditable="true">Everything you purchased is below. Click each link to make your own personal copy — it takes under five minutes to have everything set up and ready to use.</p>
+  <div class="purchase-badge">
+    <div>
+      <div class="badge-label">You purchased</div>
+      <div class="badge-product" contenteditable="true">The Operations Pack</div>
+    </div>
+    <div style="width:1px;height:32px;background:rgba(201,164,74,.2)"></div>
+    <div>
+      <div class="badge-label">3 categories</div>
+      <div class="badge-product">7 tools</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO START -->
+<section class="how-to">
+  <div class="how-to-inner">
+    <div class="section-label">Before you start — read this once</div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Make your own copy</div>
+        <p class="step-desc">Every Google Sheets link below opens a file. Click <strong>File → Make a copy</strong> to save it to your own Google Drive. Your copy belongs only to you — changes you make never affect anyone else's file.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Blue cells are yours</div>
+        <p class="step-desc">In every spreadsheet, <strong>blue cells</strong> are where you enter your numbers. White cells calculate automatically. Never delete or type over a white cell — it is a formula doing the work for you.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Start with the Instructions tab</div>
+        <p class="step-desc">Every spreadsheet opens on an <strong>Instructions tab</strong>. Read it before using the file. It takes two minutes and saves you from making avoidable mistakes on day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 1: DAILY ECONOMICS CALCULATOR -->
+<section class="prod-section" id="daily-economics">
+  <div class="prod-inner">
+    <div class="prod-category">
+      <div class="cat-number">Category 01</div>
+      <div class="cat-divider"></div>
+    </div>
+    <div class="cat-eyebrow">Google Sheets — 1 file, 7 tabs</div>
+    <div class="cat-headline" contenteditable="true">Daily Economics Calculator</div>
+    <p class="cat-desc" contenteditable="true">Your complete daily financial toolkit. Cost every drink and dish, understand your break-even, and track whether the business is hitting its numbers every single day. Seven tabs, one file, everything connected.</p>
+
+    <div class="file-card">
+      <div class="file-name" contenteditable="true">Daily Economics Calculator</div>
+      <div class="file-type">Google Sheets · 7 tabs</div>
+      <div class="file-desc" contenteditable="true">Contains your drink cost calculator (coffee and all other beverages in one view), food cost calculator, break-even calculator, weekly gross margin tracker, daily funds report, and monthly log.</div>
+      <ul class="file-contents">
+        <li contenteditable="true">Drink cost calculator — all beverages including coffee, specialty drinks, and juices</li>
+        <li contenteditable="true">Food cost calculator — per dish costing with ingredient breakdown</li>
+        <li contenteditable="true">Break-even calculator — daily covers needed before the first euro of profit</li>
+        <li contenteditable="true">Weekly gross margin tracker — trend across the year</li>
+        <li contenteditable="true">Daily funds report — complete every night at close</li>
+        <li contenteditable="true">Monthly log — running monthly picture from daily entries</li>
+      </ul>
+      <div class="link-group">
+        <label class="link-label">Your personal copy link</label>
+        <div class="link-row">
+          <input type="url" class="link-input" id="inp-daily" placeholder="Paste your Google Sheets link here" oninput="updateBtn('btn-daily',this.value)">
+          <a href="#" class="link-btn disabled" id="btn-daily" onclick="openLink('inp-daily',event)">Open file ↗</a>
+        </div>
+        <div class="link-hint">Click Open file → File → Make a copy → saved to your Google Drive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 2: GROWTH ECONOMICS CALCULATOR -->
+<section class="prod-section alt" id="growth-economics">
+  <div class="prod-inner">
+    <div class="prod-category">
+      <div class="cat-number">Category 02</div>
+      <div class="cat-divider"></div>
+    </div>
+    <div class="cat-eyebrow">Google Sheets — 1 file, 6 tabs</div>
+    <div class="cat-headline" contenteditable="true">Growth Economics Calculator</div>
+    <p class="cat-desc" contenteditable="true">Your strategic financial layer. Track profitability month by month, plan your team, and know whether your labour cost is proportionate to what the business makes. Two tools, one file, built for long-term thinking.</p>
+
+    <div class="file-card">
+      <div class="file-name" contenteditable="true">Growth Economics Calculator</div>
+      <div class="file-type">Google Sheets · 6 tabs</div>
+      <div class="file-desc" contenteditable="true">Contains your monthly P&L template with café benchmarks, annual overview, weekly shift planning, labour cost tracker as a percentage of revenue, staff list, and monthly summary.</div>
+      <ul class="file-contents">
+        <li contenteditable="true">Monthly P&L template — with real café industry benchmarks built in</li>
+        <li contenteditable="true">Annual financial overview — full year at a glance</li>
+        <li contenteditable="true">Weekly roster — plan the team before publishing the rota</li>
+        <li contenteditable="true">Labour cost as % of revenue — know immediately if staffing is proportionate</li>
+        <li contenteditable="true">Staff list and monthly summary — total hours and cost per month</li>
+      </ul>
+      <div class="link-group">
+        <label class="link-label">Your personal copy link</label>
+        <div class="link-row">
+          <input type="url" class="link-input" id="inp-growth" placeholder="Paste your Google Sheets link here" oninput="updateBtn('btn-growth',this.value)">
+          <a href="#" class="link-btn disabled" id="btn-growth" onclick="openLink('inp-growth',event)">Open file ↗</a>
+        </div>
+        <div class="link-hint">Click Open file → File → Make a copy → saved to your Google Drive</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORY 3: DAILY BASICS -->
+<section class="prod-section" id="daily-basics">
+  <div class="prod-inner">
+    <div class="prod-category">
+      <div class="cat-number">Category 03</div>
+      <div class="cat-divider"></div>
+    </div>
+    <div class="cat-eyebrow">4 separate files — Google Sheets · Notion · PDF</div>
+    <div class="cat-headline" contenteditable="true">Daily Basics</div>
+    <p class="cat-desc" contenteditable="true">The operational layer. Track waste in euros, know your suppliers, maintain your standards, and give every new team member a clear picture of their responsibilities from day one.</p>
+
+    <!-- Waste Sheet -->
+    <div class="file-card" style="margin-bottom:12px">
+      <div class="file-name" contenteditable="true">Waste Sheet</div>
+      <div class="file-type">Google Sheets · 1 tab</div>
+      <div class="file-desc" contenteditable="true">Log every item thrown away and see exactly what waste costs in euros each month. Broken down by reason and category. When you can see waste in euros, everything about how you treat stock changes.</div>
+      <div class="link-group">
+        <label class="link-label">Your personal copy link</label>
+        <div class="link-row">
+          <input type="url" class="link-input" id="inp-waste" placeholder="Paste your Google Sheets link here" oninput="updateBtn('btn-waste',this.value)">
+          <a href="#" class="link-btn disabled" id="btn-waste" onclick="openLink('inp-waste',event)">Open file ↗</a>
+        </div>
+        <div class="link-hint">Click Open file → File → Make a copy → saved to your Google Drive</div>
+      </div>
+    </div>
+
+    <!-- Suppliers Directory -->
+    <div class="file-card" style="margin-bottom:12px">
+      <div class="file-name" contenteditable="true">Suppliers Directory</div>
+      <div class="file-type">Google Sheets · 1 tab</div>
+      <div class="file-desc" contenteditable="true">Every supplier contact, delivery schedule, payment terms, and emergency number in one place. Pre-filled with the suppliers every café needs. Update with your own contacts before your first week of trading.</div>
+      <div class="link-group">
+        <label class="link-label">Your personal copy link</label>
+        <div class="link-row">
+          <input type="url" class="link-input" id="inp-supp" placeholder="Paste your Google Sheets link here" oninput="updateBtn('btn-supp',this.value)">
+          <a href="#" class="link-btn disabled" id="btn-supp" onclick="openLink('inp-supp',event)">Open file ↗</a>
+        </div>
+        <div class="link-hint">Click Open file → File → Make a copy → saved to your Google Drive</div>
+      </div>
+    </div>
+
+    <!-- Cleaning Checklist -->
+    <div class="file-card notion" style="margin-bottom:12px">
+      <div class="file-name" contenteditable="true">Cleaning Checklist <span class="notion-tag">Notion</span></div>
+      <div class="file-type">Notion Template · 176 tasks · 7 areas</div>
+      <div class="file-desc" contenteditable="true">176 cleaning tasks across 7 areas including a full espresso machine maintenance section. Tick tasks as you complete them. Resets for each session. Requires a free Notion account — create one at notion.so before clicking the link below.</div>
+      <div class="link-group">
+        <label class="link-label">Your Notion template link</label>
+        <div class="link-row">
+          <input type="url" class="link-input" id="inp-notion" placeholder="Paste your Notion duplicate link here" oninput="updateBtn('btn-notion',this.value)">
+          <a href="#" class="link-btn disabled" id="btn-notion" onclick="openLink('inp-notion',event)">Open template ↗</a>
+        </div>
+        <div class="link-hint">Requires a free Notion account → click Open template → click Duplicate in the top right corner</div>
+      </div>
+    </div>
+
+    <!-- Station Guidelines -->
+    <div class="file-card pdf">
+      <div class="file-name" contenteditable="true">Station Responsibilities & General Guidelines <span class="pdf-tag">PDF</span></div>
+      <div class="file-type">PDF Document · 5 pages · Printable</div>
+      <div class="file-desc" contenteditable="true">Five pages covering the Coffee Bar, Kitchen, and Floor & Service stations — plus general guidelines that apply to all staff. Give a copy to every new team member on their first day. Print and post at each station.</div>
+      <div class="link-group">
+        <label class="link-label">Your PDF link</label>
+        <div class="link-row">
+          <input type="url" class="link-input" id="inp-pdf" placeholder="Paste your PDF link here" oninput="updateBtn('btn-pdf',this.value)">
+          <a href="#" class="link-btn disabled" id="btn-pdf" onclick="openLink('inp-pdf',event)">Open PDF ↗</a>
+        </div>
+        <div class="link-hint">Click Open PDF → Download → Print or save to your device</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BEFORE YOU START / KEY RULES -->
+<section class="before-start">
+  <div class="bs-inner">
+    <div>
+      <div class="rule" style="margin-bottom:24px"></div>
+      <div class="bs-title" contenteditable="true">Working with your Google Sheets files</div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>Always make your copy first.</strong> Never work in the original link — your changes will be lost if anything resets. Make a copy and save to your Drive before entering a single number.</div>
+      </div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>Blue cells only.</strong> Blue is your input. White is automatic. If a cell is white and has a number in it, it is calculating something for you. Leave it alone.</div>
+      </div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>Start with the Daily Economics Calculator.</strong> Fill in your drink and food costs first. Once those are in, every other calculation has real numbers to work with.</div>
+      </div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>The Daily Funds Report is a nightly habit.</strong> Fill it in before you leave. Eight minutes. No exceptions. It is the single most important operational discipline in this pack.</div>
+      </div>
+    </div>
+    <div>
+      <div class="rule" style="margin-bottom:24px"></div>
+      <div class="bs-title" contenteditable="true">Working with Notion and the PDF</div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>Notion requires a free account.</strong> Go to notion.so and create a free account before clicking the Cleaning Checklist link. Takes two minutes. Without an account you cannot duplicate the template.</div>
+      </div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>Duplicate, do not edit the original.</strong> When the Notion page opens, click Duplicate in the top right corner. This creates your own copy in your workspace.</div>
+      </div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>Print the Station Guidelines.</strong> Download the PDF and print one copy per station. Post it in the Coffee Bar, in the Kitchen, and at the service station. New staff read it on day one.</div>
+      </div>
+      <div class="bs-item">
+        <div class="bs-dot"><span>→</span></div>
+        <div class="bs-text"><strong>This hub is personal.</strong> Do not share this page or any of the links with anyone outside your business. Each link is for one business only.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT 3 TEASE -->
+<section class="p3-tease">
+  <div class="p3-inner">
+    <div class="tease-badge">Coming soon</div>
+    <div class="rule-center rule" style="margin-bottom:28px"></div>
+    <h2 class="tease-headline" contenteditable="true">The tools are running.<br>Now get the knowledge.</h2>
+    <p class="tease-sub" contenteditable="true">The Full Guide adds five knowledge modules to everything you already have — covering every dimension of running a café business. Foundations, operations, menu engineering, customer relationships, and growth. Written by someone who has lived it. Plus the OFF MENU AI advisor, available 24 hours a day. Operations Pack buyers upgrade at the difference.</p>
+    <a href="#" class="btn-outline" contenteditable="false">Learn about the Full Guide</a>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support">
+  <div class="support-inner">
+    <div class="support-text">
+      <div class="support-title" contenteditable="true">Need help with anything?</div>
+      <p class="support-desc" contenteditable="true">If a link is not working, a file is not opening, or you have a question about how to use any tool — reach out directly.</p>
+    </div>
+    <div>
+      <a href="mailto:hello@offmenu.store" class="support-email" contenteditable="true">hello@offmenu.store</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">OFF MENU</div>
+  <div class="footer-note" contenteditable="true">© OFF MENU 2025 — This page is personal. Do not share or redistribute.</div>
+</footer>
+
+<script>
+// Sticky nav scroll
+window.addEventListener('scroll',()=>{});
+
+// Update button state when link is pasted
+function updateBtn(btnId, val){
+  const btn=document.getElementById(btnId);
+  if(val && val.startsWith('http')){
+    btn.href=val;
+    btn.classList.remove('disabled');
+    btn.style.background='';
+    btn.style.cursor='';
+  } else {
+    btn.href='#';
+    btn.classList.add('disabled');
+  }
+}
+
+// Open link from input
+function openLink(inputId, e){
+  const val=document.getElementById(inputId).value;
+  if(val && val.startsWith('http')){
+    window.open(val,'_blank');
+    e.preventDefault();
+  } else {
+    e.preventDefault();
+    document.getElementById(inputId).focus();
+    document.getElementById(inputId).style.borderColor='#C9A44A';
+    setTimeout(()=>document.getElementById(inputId).style.borderColor='',1500);
+  }
+}
+
+// Save HTML with current link values baked in
+function saveHTML(){
+  // Bake input values into data attributes so they survive save/reload
+  document.querySelectorAll('.link-input').forEach(input=>{
+    input.setAttribute('value', input.value);
+  });
+  const clone=document.documentElement.cloneNode(true);
+  clone.querySelector('.toolbar').remove();
+  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  const html='<!DOCTYPE html>\n'+clone.outerHTML;
+  const blob=new Blob([html],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='OffMenu_Welcome_Hub.html';
+  a.click();
+}
+</script>
+</body>
+</html>
