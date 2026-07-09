@@ -89,6 +89,10 @@ body{font-family:var(--body);background:var(--paper);color:var(--ink);line-heigh
 .gift-submit{font-family:var(--body);font-size:13px;font-weight:600;padding:16px 24px;background:var(--gold);color:var(--ink);border:none;border-radius:0 4px 4px 0;cursor:pointer;letter-spacing:.06em;white-space:nowrap}
 .gift-submit:hover{background:#B8952A}
 .gift-note{font-family:var(--body);font-size:12px;color:rgba(255,255,255,.3);letter-spacing:.04em}
+.gift-consent{display:flex;align-items:flex-start;gap:10px;text-align:left;max-width:420px;margin:0 auto 20px;font-family:var(--body);font-size:12px;color:rgba(255,255,255,.5);line-height:1.6;cursor:pointer}
+.gift-consent input[type="checkbox"]{margin-top:3px;flex-shrink:0;accent-color:var(--gold);width:15px;height:15px;cursor:pointer}
+.gift-consent a{color:var(--gold);text-decoration:underline}
+.gift-success{display:none;max-width:420px;margin:0 auto 20px;font-family:var(--body);font-size:14px;color:var(--gold);padding:14px 18px;border:1px solid rgba(201,164,74,.3);border-radius:4px;background:rgba(201,164,74,.06)}
 
 /* ── PRODUCT 2 ── */
 .product-two{background:var(--paper);padding:100px 48px}
@@ -247,10 +251,17 @@ footer{padding:24px;flex-direction:column;text-align:center}
     <div class="gift-tag">Free — no payment required</div>
     <h2 class="gift-headline" contenteditable="true">The 10 things every profitable café owner knows.</h2>
     <p class="gift-sub" contenteditable="true">The Δεκάλογος Επιτυχίας — 10 operational principles from 27 years of hospitality ownership. The things that separate cafés that survive from the ones that close in year two. Enter your email and receive it immediately.</p>
-    <div class="gift-form">
-      <input type="email" class="gift-input" placeholder="Your email address">
-      <button class="gift-submit">Get it free</button>
-    </div>
+    <form id="giftForm" method="POST" action="https://app.kit.com/forms/9655594/subscriptions">
+      <div class="gift-form">
+        <input type="email" name="email_address" class="gift-input" placeholder="Your email address" required>
+        <button type="submit" class="gift-submit">Get it free</button>
+      </div>
+      <label class="gift-consent">
+        <input type="checkbox" name="tags[]" value="20980375" required>
+        <span>I agree to receive the free guide and occasional OFF MENU emails by email. I can unsubscribe at any time. See our <a href="/privacy">Privacy Policy</a> for how your data is used.</span>
+      </label>
+      <div class="gift-success" id="giftSuccess">Success! Check your email to confirm your subscription.</div>
+    </form>
     <div class="gift-note" contenteditable="true">No spam. Unsubscribe any time. Your email is used only to deliver the guide and relevant OFF MENU updates.</div>
   </div>
 </section>
@@ -432,6 +443,31 @@ function saveHTML(){
   const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
   a.download='OffMenu_Landing_Page.html'; a.click();
 }
+
+// Free gift form — submits to Kit without leaving the page
+(function(){
+  const form = document.getElementById('giftForm');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const submitBtn = form.querySelector('.gift-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      mode: 'no-cors'
+    }).then(function(){
+      form.querySelector('.gift-form').style.display = 'none';
+      form.querySelector('.gift-consent').style.display = 'none';
+      document.getElementById('giftSuccess').style.display = 'block';
+    }).catch(function(){
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Get it free';
+      alert('Something went wrong. Please check your connection and try again.');
+    });
+  });
+})();
 
 // Smooth internal links
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
