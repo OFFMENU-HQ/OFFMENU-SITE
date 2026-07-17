@@ -236,7 +236,8 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     <h2>The 5 mistakes that close cafés.</h2>
     <p class="free-sub">The five things that quietly kill new food businesses in their first year — and exactly how to avoid each one. Ten minutes to read. Nothing to pay.</p>
 
-    <form id="giftForm" method="POST" action="https://app.kit.com/forms/9655594/subscriptions">
+    <iframe name="kitTarget" id="kitTarget" title="hidden" style="display:none;width:0;height:0;border:0"></iframe>
+    <form id="giftForm" method="POST" action="https://app.kit.com/forms/9655594/subscriptions" target="kitTarget">
       <div class="gift-form">
         <input type="email" name="email_address" class="gift-input" placeholder="Your email address" required>
         <button type="submit" class="gift-submit">Send it to me</button>
@@ -356,27 +357,30 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <script>
 var EDIT = new URLSearchParams(location.search).has('edit');
 
-/* ---- Free guide form: submits to Kit without leaving the page ---- */
+/* ---- Free guide form ----
+   Submits natively to Kit (correct encoding, exactly like Kit's own form),
+   but targets a hidden iframe so the visitor never leaves the page. */
 (function(){
-  var form = document.getElementById('giftForm');
-  if(!form) return;
+  var form  = document.getElementById('giftForm');
+  var frame = document.getElementById('kitTarget');
+  if(!form || !frame) return;
+
+  var sent = false;
+
   form.addEventListener('submit', function(e){
-    e.preventDefault();
-    if(EDIT) return;
+    if(EDIT){ e.preventDefault(); return; }
+    // no preventDefault: let the browser POST for real, into the iframe
     var btn = form.querySelector('.gift-submit');
     btn.disabled = true;
     btn.textContent = 'Sending...';
-    fetch(form.action, { method:'POST', body:new FormData(form), mode:'no-cors' })
-      .then(function(){
-        form.querySelector('.gift-form').style.display = 'none';
-        form.querySelector('.gift-consent').style.display = 'none';
-        document.getElementById('giftSuccess').style.display = 'block';
-      })
-      .catch(function(){
-        btn.disabled = false;
-        btn.textContent = 'Send it to me';
-        alert('Something went wrong. Please check your connection and try again.');
-      });
+    sent = true;
+  });
+
+  frame.addEventListener('load', function(){
+    if(!sent) return;               // ignore the iframe's own initial load
+    form.querySelector('.gift-form').style.display = 'none';
+    form.querySelector('.gift-consent').style.display = 'none';
+    document.getElementById('giftSuccess').style.display = 'block';
   });
 })();
 
