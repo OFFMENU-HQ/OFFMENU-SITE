@@ -4,99 +4,312 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Privacy Policy — OFF MENU</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="How OFF MENU handles your data — explained in plain language.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
---ink:#1C1C1A;--gold:#C9A44A;--gold-dk:#9A6B0A;
---paper:#FAFAF8;--fog:#EEEAE4;--smoke:#6B6560;--white:#FFFFFF;
---display:'Playfair Display',Georgia,serif;
---body:'DM Sans',system-ui,sans-serif;
+  --black:#141210;
+  --raised:#1E1B18;
+  --bone:#F4F1EA;
+  --orange:#FF4D00;
+  --muted:#8A8378;
+  --faint:#5C574F;
+  --line:rgba(244,241,234,.12);
+  --display:'Archivo Black',Impact,sans-serif;
+  --body:'Archivo',system-ui,-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:var(--body);background:var(--paper);color:var(--ink);line-height:1.7;-webkit-font-smoothing:antialiased}
-.nav{background:var(--ink);padding:20px 48px;display:flex;align-items:center;justify-content:space-between}
-.nav-brand{font-family:var(--display);font-size:20px;font-weight:700;color:var(--white);letter-spacing:.08em;text-decoration:none}
-.nav-back{font-family:var(--body);font-size:12px;font-weight:500;color:rgba(255,255,255,.6);text-decoration:none;letter-spacing:.06em;text-transform:uppercase}
-.nav-back:hover{color:var(--gold)}
-.hero{background:var(--ink);padding:64px 48px 72px;text-align:center}
-.hero h1{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:700;font-style:italic;color:var(--white);margin-bottom:12px}
-.hero-rule{width:48px;height:1px;background:var(--gold);margin:24px auto}
-.hero-sub{font-family:var(--body);font-size:14px;color:rgba(255,255,255,.5)}
-.content{max-width:720px;margin:0 auto;padding:64px 24px 80px}
-h2{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ink);margin:40px 0 12px}
-h2:first-of-type{margin-top:0}
-p{font-size:15px;color:var(--smoke);margin-bottom:14px}
-ul{margin:0 0 14px 0;list-style:none}
-li{font-size:15px;color:var(--smoke);padding-left:20px;position:relative;margin-bottom:8px}
-li::before{content:'→';position:absolute;left:0;color:var(--gold);font-size:13px}
-strong{color:var(--ink);font-weight:600}
-a{color:var(--gold-dk)}
-.updated{font-size:12px;color:var(--smoke);letter-spacing:.06em;text-transform:uppercase;margin-bottom:32px}
-.rule{width:38px;height:1px;background:var(--gold);margin:8px 0 24px}
-footer{background:rgba(10,10,8,1);padding:32px 48px;text-align:center}
-.footer-brand{font-family:var(--display);font-size:15px;font-weight:700;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-bottom:6px}
-.footer-note{font-family:var(--body);font-size:12px;color:rgba(255,255,255,.2)}
-@media(max-width:768px){.nav,.hero{padding-left:24px;padding-right:24px}}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--black);color:var(--bone);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+::selection{background:var(--orange);color:var(--bone)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.strike{display:inline-block;width:56px;height:5px;background:var(--orange)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(20,18,16,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1060px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--display);font-size:17px;letter-spacing:.12em;text-decoration:none;color:var(--bone)}
+.brand .om-strike{position:relative}
+.brand .om-strike::after{content:'';position:absolute;left:-2px;right:-2px;top:52%;height:2.5px;background:var(--orange)}
+.nav-back{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:9px 18px;border:1.5px solid var(--line);border-radius:2px;transition:border-color .18s,color .18s}
+.nav-back:hover{border-color:var(--bone);color:var(--bone)}
+
+/* HEADER */
+.head{padding:80px 0 56px;border-bottom:1px solid var(--line)}
+.head h1{font-family:var(--display);font-size:clamp(32px,5vw,56px);line-height:1.04;text-transform:uppercase;margin:20px 0 14px}
+.head p{font-size:16px;color:var(--muted);max-width:52ch}
+.updated{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:22px}
+
+/* PLAIN SUMMARY */
+.summary{padding:56px 0;border-bottom:1px solid var(--line)}
+.summary-card{background:var(--bone);color:var(--black);border-radius:3px;padding:32px 36px}
+.summary-card h2{font-family:var(--display);font-size:15px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:18px}
+.summary-card ul{list-style:none}
+.summary-card li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:baseline;padding:9px 0;font-size:15px;line-height:1.6}
+.summary-card li::before{content:'';display:block;width:16px;height:3px;background:var(--orange);transform:translateY(-3px)}
+.summary-card li b{font-weight:700}
+.summary-note{font-size:12.5px;color:var(--faint);margin-top:16px;font-style:italic}
+
+/* TOC */
+.toc{padding:40px 0;border-bottom:1px solid var(--line)}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t;columns:2;column-gap:40px}
+.toc li{counter-increment:t;padding:7px 0;break-inside:avoid}
+.toc a{font-size:14.5px;color:var(--bone);text-decoration:none;display:flex;gap:12px;align-items:baseline}
+.toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--display);font-size:12px;color:var(--orange)}
+.toc a:hover{color:var(--orange)}
+
+/* SECTIONS */
+.content{padding:24px 0 72px}
+section.block{padding:44px 0;border-bottom:1px solid var(--line)}
+section.block:last-of-type{border-bottom:none}
+.block h2{font-family:var(--display);font-size:clamp(19px,2.4vw,26px);line-height:1.15;text-transform:uppercase;margin-bottom:18px;display:flex;gap:14px;align-items:baseline}
+.block h2::before{content:attr(data-n);font-size:13px;color:var(--orange)}
+.block p{font-size:15.5px;color:var(--muted);margin-bottom:13px;max-width:66ch}
+.block p b,.block li b{color:var(--bone);font-weight:600}
+.block ul{list-style:none;margin:4px 0 14px}
+.block li{font-size:15.5px;color:var(--muted);padding:7px 0 7px 26px;position:relative;max-width:64ch}
+.block li::before{content:'';position:absolute;left:0;top:16px;width:14px;height:3px;background:var(--orange)}
+
+/* DATA TABLE */
+.dtable{width:100%;border-collapse:collapse;margin:8px 0 14px;font-size:14px}
+.dtable th{text-align:left;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding:10px 14px 10px 0;border-bottom:1.5px solid var(--line)}
+.dtable td{padding:13px 14px 13px 0;border-bottom:1px solid var(--line);color:var(--muted);vertical-align:top;line-height:1.55}
+.dtable td:first-child{color:var(--bone);font-weight:600;white-space:nowrap}
+
+/* CONTACT BOX */
+.contact-box{background:var(--raised);border:1px solid var(--line);border-radius:3px;padding:26px 30px;margin-top:8px}
+.contact-box p{margin-bottom:6px}
+.contact-box .mail{font-family:var(--display);font-size:17px;letter-spacing:.02em}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:32px 0}
+.foot-in{max-width:1060px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-brand{font-family:var(--display);font-size:14px;letter-spacing:.12em;color:var(--muted)}
+.foot-links{font-size:13px;color:var(--muted);display:flex;gap:20px}
+.foot-links a{text-decoration:none;color:var(--muted)}
+.foot-links a:hover{color:var(--orange)}
+
+/* EDIT MODE — only with ?edit in the URL */
+#edbar{position:fixed;bottom:18px;right:18px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#edbar .hint{font-size:11px;color:var(--muted);background:rgba(20,18,16,.9);padding:5px 9px;border-radius:2px}
+#edbar button{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:11px 16px;border:none;border-radius:2px;cursor:pointer;background:var(--orange);color:var(--bone)}
+[contenteditable="true"]{outline:1px dashed rgba(255,77,0,.5);outline-offset:3px;border-radius:1px}
+[contenteditable="true"]:hover{background:rgba(255,77,0,.08)}
+[contenteditable="true"]:focus{outline:2px solid var(--orange);background:rgba(255,77,0,.12)}
+
+@media(max-width:640px){
+  .toc ol{columns:1}
+  .summary-card{padding:26px 22px}
+  .head{padding:56px 0 44px}
+  .dtable td:first-child{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="/" class="nav-brand">OFF MENU</a>
-  <a href="/" class="nav-back">← Back to site</a>
+<nav>
+  <div class="nav-in">
+    <a href="/" class="brand"><span class="om-strike">OFF</span> MENU</a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </div>
 </nav>
 
-<section class="hero">
-  <h1>Privacy Policy</h1>
-  <div class="hero-rule"></div>
-  <div class="hero-sub">How we handle your data — plainly explained.</div>
+<!-- HEADER -->
+<header class="head">
+  <div class="wrap">
+    <span class="strike"></span>
+    <h1>Privacy, in plain language.</h1>
+    <p>No legal maze. This page tells you exactly what data we collect, why, who touches it, and how to make us delete it — in words a person can actually read.</p>
+    <div class="updated">Last updated: July 2026</div>
+  </div>
+</header>
+
+<!-- PLAIN SUMMARY -->
+<section class="summary">
+  <div class="wrap">
+    <div class="summary-card">
+      <h2>The whole policy in 30 seconds</h2>
+      <ul>
+        <li><span><b>We collect your email</b> when you ask for the free guide — nothing more, and only because you ticked the box.</span></li>
+        <li><span><b>We never see your card details.</b> Payments are handled entirely by our payment provider.</span></li>
+        <li><span><b>We never sell your data.</b> Not to anyone, not for anything.</span></li>
+        <li><span><b>Every email has an unsubscribe link</b> that works instantly, every time.</span></li>
+        <li><span><b>You can ask us to delete everything</b> we hold about you with one email. We answer within 30 days.</span></li>
+      </ul>
+      <p class="summary-note">The full details are below — same facts, more precision.</p>
+    </div>
+  </div>
 </section>
 
+<!-- TOC -->
+<section class="toc">
+  <div class="wrap">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#who">Who we are</a></li>
+      <li><a href="#data">What we collect, and why</a></li>
+      <li><a href="#processors">Who processes it for us</a></li>
+      <li><a href="#retention">How long we keep it</a></li>
+      <li><a href="#rights">Your rights</a></li>
+      <li><a href="#cookies">Cookies</a></li>
+      <li><a href="#security">How we protect it</a></li>
+      <li><a href="#children">Children</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- CONTENT -->
 <div class="content">
-  <div class="updated">Last updated: July 2026</div>
+  <div class="wrap">
 
-  <h2>Who we are</h2>
-  <p>OFF MENU provides operational guides and tools for café and food-business owners. This website and its services are operated by OFF MENU <!-- [LEGAL ENTITY NAME & REGISTRATION DETAILS — add once business registration completes] -->, based in Greece. For anything related to your data, contact us at <a href="mailto:offmenu.business@gmail.com">offmenu.business@gmail.com</a>.</p>
+    <section class="block" id="who">
+      <h2 data-n="01">Who we are</h2>
+      <p>OFF MENU creates operational guides and tools for café and food-business owners. This website and its services are operated by OFF MENU, based in Greece.</p>
+      <p>For anything related to your personal data, we are the "data controller" — which simply means we're the ones responsible for handling it properly, and the ones you contact about it.</p>
+    </section>
 
-  <h2>What data we collect, and why</h2>
-  <p><strong>Your email address</strong> — when you request our free guide or subscribe to updates, we collect the email address you provide. We use it to deliver the guide, send you relevant OFF MENU content, and occasionally tell you about our products. Legal basis: your explicit consent, given via the checkbox on our signup form. You can withdraw it at any time.</p>
-  <p><strong>Purchase information</strong> — if you buy one of our products, our payment provider processes your payment details. We never see or store your card numbers. We receive your email address and order details so we can deliver what you bought.</p>
-  <p><strong>Basic technical data</strong> — our hosting provider (Cloudflare) automatically processes standard technical information such as IP addresses to serve the website securely and protect it from abuse. We do not use this to identify you.</p>
+    <section class="block" id="data">
+      <h2 data-n="02">What we collect, and why</h2>
+      <table class="dtable">
+        <tr><th>What</th><th>When &amp; why</th></tr>
+        <tr>
+          <td>Your email address</td>
+          <td>When you request the free guide or subscribe to updates. We use it to deliver the guide, send you useful OFF MENU content, and occasionally tell you about our products. <b>Legal basis: your explicit consent</b> — the checkbox you tick on the form. You can withdraw it at any time.</td>
+        </tr>
+        <tr>
+          <td>Purchase details</td>
+          <td>When you buy a product, our payment provider processes the payment. <b>We never see or store your card numbers.</b> We receive your email and order details so we can deliver what you bought and keep the records Greek tax law requires.</td>
+        </tr>
+        <tr>
+          <td>Basic technical data</td>
+          <td>Our hosting provider automatically processes standard technical information — such as IP addresses — to serve the website securely and protect it from attacks. We don't use this to identify you.</td>
+        </tr>
+      </table>
+      <p>That's the complete list. We don't collect names, phone numbers, locations, or anything else — because we don't need them.</p>
+    </section>
 
-  <h2>Who processes your data on our behalf</h2>
-  <ul>
-    <li><strong>Kit (ConvertKit)</strong> — our email service provider. Stores subscriber emails and sends our emails. Kit is based in the United States and participates in recognised EU–US data-transfer frameworks.</li>
-    <li><strong>Cloudflare</strong> — hosts and secures this website.</li>
-    <li><strong>Payhip</strong> — processes purchases and payments when you buy a product.</li>
-  </ul>
-  <p>We do not sell your data. We do not share it with anyone beyond the processors above, who act under our instructions.</p>
+    <section class="block" id="processors">
+      <h2 data-n="03">Who processes it for us</h2>
+      <p>A few carefully chosen services handle data on our behalf, under our instructions:</p>
+      <ul>
+        <li><b>Kit (ConvertKit)</b> — our email service. Stores subscriber emails and sends our emails. Kit is based in the United States and participates in recognised EU–US data-transfer frameworks.</li>
+        <li><b>Cloudflare</b> — hosts and secures this website.</li>
+        <li><b>Payhip</b> — processes purchases and payments when you buy a product.</li>
+      </ul>
+      <p><b>We do not sell your data.</b> We do not share it with advertisers, brokers, or anyone beyond the processors above.</p>
+    </section>
 
-  <h2>How long we keep your data</h2>
-  <p>We keep your email address until you unsubscribe or ask us to delete it. Purchase records are kept as long as required by Greek tax and accounting law. Technical logs are retained briefly by our hosting provider for security purposes.</p>
+    <section class="block" id="retention">
+      <h2 data-n="04">How long we keep it</h2>
+      <ul>
+        <li><b>Your email:</b> until you unsubscribe or ask us to delete it.</li>
+        <li><b>Purchase records:</b> as long as Greek tax and accounting law requires us to keep them.</li>
+        <li><b>Technical logs:</b> kept briefly by our hosting provider for security, then discarded.</li>
+      </ul>
+    </section>
 
-  <h2>Your rights</h2>
-  <p>Under the GDPR, you have the right to:</p>
-  <ul>
-    <li>Access the data we hold about you</li>
-    <li>Correct it if it's wrong</li>
-    <li>Have it deleted ("right to be forgotten")</li>
-    <li>Receive a copy in a portable format</li>
-    <li>Withdraw your consent at any time — every email we send includes an unsubscribe link that works instantly</li>
-    <li>Lodge a complaint with the Hellenic Data Protection Authority (<a href="https://www.dpa.gr" rel="noopener">dpa.gr</a>) if you believe we've mishandled your data</li>
-  </ul>
-  <p>To exercise any of these, email <a href="mailto:offmenu.business@gmail.com">offmenu.business@gmail.com</a> — we'll respond within 30 days.</p>
+    <section class="block" id="rights">
+      <h2 data-n="05">Your rights</h2>
+      <p>Under the GDPR, you can:</p>
+      <ul>
+        <li><b>Access</b> — ask for a copy of everything we hold about you.</li>
+        <li><b>Correct</b> — have anything wrong put right.</li>
+        <li><b>Delete</b> — have everything erased ("the right to be forgotten").</li>
+        <li><b>Take it with you</b> — receive your data in a portable format.</li>
+        <li><b>Withdraw consent</b> — any time. Every email we send includes an unsubscribe link that works instantly.</li>
+        <li><b>Complain</b> — to the Hellenic Data Protection Authority at <a href="https://www.dpa.gr" rel="noopener">dpa.gr</a> if you believe we've mishandled your data.</li>
+      </ul>
+      <p>To use any of these, email us — details at the bottom of this page. <b>We respond within 30 days,</b> and exercising your rights costs nothing.</p>
+    </section>
 
-  <h2>Cookies</h2>
-  <p>This website currently uses only the strictly necessary technical cookies set by our hosting and security provider. We do not run advertising or tracking cookies on this site. If that changes — for example, if we add analytics or advertising pixels — this policy and our cookie practices will be updated first, and consent will be requested where required.</p>
+    <section class="block" id="cookies">
+      <h2 data-n="06">Cookies</h2>
+      <p>This website uses only the strictly necessary technical cookies set by our hosting and security provider to keep the site working and safe. <b>We run no advertising or tracking cookies</b> — which is why you don't see a cookie banner here.</p>
+      <p>If that ever changes — for example, if we add analytics or advertising tools — this policy will be updated first, and we'll ask for your consent where the law requires it.</p>
+    </section>
 
-  <h2>Changes to this policy</h2>
-  <p>If we change how we handle your data, we'll update this page and revise the date at the top. Significant changes affecting existing subscribers will be communicated by email.</p>
+    <section class="block" id="security">
+      <h2 data-n="07">How we protect it</h2>
+      <p>The website is served entirely over encrypted connections (HTTPS). Your email lives inside Kit's secured infrastructure, and payment data never touches our systems at all — it goes directly to the payment provider, which is certified to handle it.</p>
+      <p>No system on earth is perfectly secure, but we deliberately keep the amount of data we hold as small as possible — the safest data is the data we never collected.</p>
+    </section>
+
+    <section class="block" id="children">
+      <h2 data-n="08">Children</h2>
+      <p>Our products and website are intended for business owners and adults. We do not knowingly collect data from anyone under 16. If you believe a child has given us their details, contact us and we'll delete them promptly.</p>
+    </section>
+
+    <section class="block" id="changes">
+      <h2 data-n="09">Changes to this policy</h2>
+      <p>If we change how we handle your data, we'll update this page and revise the date at the top. If a change meaningfully affects existing subscribers, we'll also tell you by email before it takes effect.</p>
+    </section>
+
+    <section class="block" id="contact">
+      <h2 data-n="10">Contact us</h2>
+      <p>Questions, requests, or anything about your data:</p>
+      <div class="contact-box">
+        <p class="mail"><a href="mailto:offmenu.business@gmail.com">offmenu.business@gmail.com</a></p>
+        <p style="font-size:13.5px;color:var(--faint)">We reply to every data request within 30 days — usually much faster.</p>
+      </div>
+    </section>
+
+  </div>
 </div>
 
 <footer>
-  <div class="footer-brand">OFF MENU</div>
-  <div class="footer-note">© OFF MENU 2026 — The knowledge they don't put on the menu.</div>
+  <div class="foot-in">
+    <div class="foot-brand">OFF MENU</div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <span>© 2026 OFF MENU</span>
+    </div>
+  </div>
 </footer>
 
+<script>
+/* Edit mode: add ?edit to the URL. Invisible to normal visitors. */
+(function(){
+  if(!new URLSearchParams(location.search).has('edit')) return;
+
+  var SEL = 'h1,h2,.head p,.updated,.summary-card li span,.summary-card h2,.summary-note,' +
+            '.block p,.block li,.dtable td,.dtable th,.contact-box p,.toc a,.foot-brand';
+  document.querySelectorAll(SEL).forEach(function(el){
+    el.setAttribute('contenteditable','true');
+  });
+  document.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+
+  var bar = document.createElement('div');
+  bar.id = 'edbar';
+  bar.innerHTML = '<div class="hint">Click any text to edit</div>' +
+                  '<button type="button">Download updated file</button>';
+  document.body.appendChild(bar);
+
+  bar.querySelector('button').addEventListener('click', function(){
+    var clone = document.documentElement.cloneNode(true);
+    var b = clone.querySelector('#edbar');
+    if(b) b.remove();
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable');
+    });
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([html], {type:'text/html'}));
+    a.download = 'privacy.html';
+    a.click();
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Welcome — OFF MENU</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#141210;
+  --raised:#1E1B18;
+  --bone:#F4F1EA;
+  --orange:#FF4D00;
+  --muted:#8A8378;
+  --faint:#5C574F;
+  --line:rgba(244,241,234,.12);
+  --display:'Archivo Black',Impact,sans-serif;
+  --body:'Archivo',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--black);color:var(--bone);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+::selection{background:var(--orange);color:var(--bone)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+.wrap{max-width:940px;margin:0 auto;padding:0 24px}
+.strike{display:inline-block;width:56px;height:5px;background:var(--orange)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+
+/* NAV */
+nav{border-bottom:1px solid var(--line)}
+.nav-in{max-width:940px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--display);font-size:17px;letter-spacing:.12em;text-decoration:none;color:var(--bone)}
+.brand .om-strike{position:relative}
+.brand .om-strike::after{content:'';position:absolute;left:-2px;right:-2px;top:52%;height:2.5px;background:var(--orange)}
+.nav-tag{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+
+/* HEADER */
+.head{padding:80px 0 56px;border-bottom:1px solid var(--line)}
+.head h1{font-family:var(--display);font-size:clamp(34px,5.6vw,62px);line-height:1.02;text-transform:uppercase;margin:20px 0 20px}
+.head h1 .no{color:var(--orange)}
+.head p{font-size:17px;color:var(--muted);max-width:56ch;margin-bottom:12px}
+.head p strong{color:var(--bone);font-weight:600}
+
+/* FILES CARD */
+.files{padding:64px 0;border-bottom:1px solid var(--line)}
+.files-head{margin-bottom:28px}
+.files-head h2{font-family:var(--display);font-size:clamp(22px,3vw,32px);text-transform:uppercase;margin:14px 0 12px}
+.files-head p{font-size:15px;color:var(--muted);max-width:56ch}
+.card{background:var(--bone);color:var(--black);border-radius:3px;padding:14px 36px 30px}
+.frow{
+  display:grid;grid-template-columns:34px 1fr 190px;gap:20px;
+  padding:26px 0;border-bottom:1px solid rgba(20,18,16,.1);align-items:start;
+}
+.frow:last-child{border-bottom:none}
+.fnum{font-family:var(--display);font-size:15px;color:var(--orange);padding-top:2px}
+.fname{font-family:var(--display);font-size:16px;text-transform:uppercase;letter-spacing:.02em;margin-bottom:5px}
+.fname .fmt{font-family:var(--body);font-weight:400;font-size:12px;color:var(--faint);letter-spacing:.06em}
+.fdesc{font-size:14px;color:var(--faint);line-height:1.6;margin-bottom:10px;max-width:52ch}
+.fwhen{
+  font-size:12.5px;font-weight:600;color:var(--black);
+  padding-left:22px;position:relative;line-height:1.55;max-width:52ch;
+}
+.fwhen::before{content:'';position:absolute;left:0;top:9px;width:14px;height:3px;background:var(--orange)}
+.fbtn{
+  display:block;text-align:center;font-size:12px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;padding:14px 10px;background:var(--black);color:var(--bone);
+  text-decoration:none;border-radius:2px;transition:background .18s;
+}
+.fbtn:hover{background:var(--orange)}
+.fbtn.pending{background:rgba(20,18,16,.12);color:var(--faint);pointer-events:none}
+.ed-link{
+  display:none;width:100%;margin-top:8px;font-family:var(--body);font-size:12px;
+  padding:9px 10px;border:1.5px dashed var(--orange);border-radius:2px;
+  background:#fff;color:var(--black);
+}
+.ed-link:focus{outline:none;border-style:solid}
+
+/* HOW TO START */
+.start{padding:64px 0;border-bottom:1px solid var(--line)}
+.start-in{max-width:62ch}
+.start h2{font-family:var(--display);font-size:clamp(22px,3vw,32px);text-transform:uppercase;margin:14px 0 18px;line-height:1.14}
+.start p{font-size:15.5px;color:var(--muted);margin-bottom:13px}
+.start p strong{color:var(--bone);font-weight:600}
+.notes{margin-top:26px;display:grid;gap:14px}
+.note{
+  background:var(--raised);border:1px solid var(--line);border-radius:3px;
+  padding:16px 20px;font-size:14px;color:var(--muted);line-height:1.6;
+}
+.note b{color:var(--bone);font-weight:600}
+
+/* NEXT */
+.next{padding:64px 0;border-bottom:1px solid var(--line)}
+.next-in{max-width:62ch}
+.soon{display:inline-block;border:1.5px solid var(--line);color:var(--muted);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:5px 12px;margin-bottom:18px}
+.next h2{font-family:var(--display);font-size:clamp(22px,2.8vw,32px);text-transform:uppercase;margin-bottom:14px;line-height:1.14}
+.next p{font-size:15.5px;color:var(--muted);line-height:1.75;margin-bottom:16px}
+.next-price{font-size:14px;color:var(--muted)}
+.next-price b{color:var(--bone);font-family:var(--display);font-weight:400}
+
+/* SUPPORT */
+.support{padding:64px 0 72px}
+.support-in{max-width:62ch}
+.support h2{font-family:var(--display);font-size:clamp(20px,2.6vw,28px);text-transform:uppercase;margin:14px 0 14px}
+.support p{font-size:15.5px;color:var(--muted);margin-bottom:16px}
+.mailbox{background:var(--raised);border:1px solid var(--line);border-radius:3px;padding:22px 26px}
+.mailbox .mail{font-family:var(--display);font-size:17px;letter-spacing:.02em}
+.mailbox .sub{font-size:13px;color:var(--faint);margin-top:6px}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:32px 0}
+.foot-in{max-width:940px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-brand{font-family:var(--display);font-size:14px;letter-spacing:.12em;color:var(--muted)}
+.foot-links{font-size:13px;color:var(--muted);display:flex;gap:20px}
+.foot-links a{text-decoration:none;color:var(--muted)}
+.foot-links a:hover{color:var(--orange)}
+
+/* EDIT MODE */
+#edbar{position:fixed;bottom:18px;right:18px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#edbar .hint{font-size:11px;color:var(--muted);background:rgba(20,18,16,.9);padding:5px 9px;border-radius:2px;text-align:right;max-width:230px;line-height:1.5}
+#edbar button{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:11px 16px;border:none;border-radius:2px;cursor:pointer;background:var(--orange);color:var(--bone)}
+[contenteditable="true"]{outline:1px dashed rgba(255,77,0,.5);outline-offset:3px;border-radius:1px}
+[contenteditable="true"]:hover{background:rgba(255,77,0,.08)}
+[contenteditable="true"]:focus{outline:2px solid var(--orange);background:rgba(255,77,0,.12)}
+
+@media(max-width:820px){
+  .frow{grid-template-columns:28px 1fr;gap:14px}
+  .fbtn{grid-column:2;margin-top:6px}
+  .card{padding:8px 22px 24px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="brand"><span class="om-strike">OFF</span> MENU</a>
+    <div class="nav-tag">Product One</div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<header class="head">
+  <div class="wrap">
+    <span class="strike"></span>
+    <h1>You're in. Here's everything.</h1>
+    <p>Thank you for buying the Success Decalogue. <strong>Everything below is yours to keep</strong> — download it, print it, keep it on the pass. It doesn't expire and it won't be taken away.</p>
+    <p>Bookmark this page. It's the only address you'll need.</p>
+  </div>
+</header>
+
+<!-- FILES -->
+<section class="files">
+  <div class="wrap">
+    <div class="files-head">
+      <div class="eyebrow">Your files</div>
+      <h2>Four things. In this order.</h2>
+      <p>The order matters more than people expect. Read first, then measure. Doing it the other way round is how owners end up with numbers they don't know how to act on.</p>
+    </div>
+
+    <div class="card">
+
+      <div class="frow">
+        <div class="fnum">01</div>
+        <div>
+          <div class="fname">The Success Decalogue <span class="fmt">· PDF · 22 pages</span></div>
+          <div class="fdesc">Ten chapters: owner psychology, location, product, customer experience, financial management, pricing, ergonomics, staff. Action steps and a checklist in every one.</div>
+          <div class="fwhen">Read it once, start to finish, before you touch anything else. Then come back to it a chapter at a time.</div>
+        </div>
+        <div>
+          <a href="#" class="fbtn file-link">Open the Decalogue</a>
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fnum">02</div>
+        <div>
+          <div class="fname">Opening Checklist <span class="fmt">· PDF</span></div>
+          <div class="fdesc">Everything that has to be locked in before the doors open — the things nobody remembers until it's too late to fix them cheaply.</div>
+          <div class="fwhen">Print it. Tick it by hand. Don't trust your memory on opening week — nobody's memory works that week.</div>
+        </div>
+        <div>
+          <a href="#" class="fbtn file-link">Open the Checklist</a>
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fnum">03</div>
+        <div>
+          <div class="fname">Food Cost Calculator <span class="fmt">· Excel</span></div>
+          <div class="fdesc">Two tabs: recipe costing, then menu pricing. Work out what a plate actually costs you, then decide what it should sell for — in that order.</div>
+          <div class="fwhen">Use it before you price anything. Then again every time a supplier changes a price on you.</div>
+        </div>
+        <div>
+          <a href="#" class="fbtn file-link">Open the Calculator</a>
+        </div>
+      </div>
+
+      <div class="frow">
+        <div class="fnum">04</div>
+        <div>
+          <div class="fname">Benchmarks Tracker <span class="fmt">· Excel</span></div>
+          <div class="fdesc">Food, drink, labour, prime cost, rent, profit — your numbers measured against real industry ranges, with every category explained in plain language inside the file.</div>
+          <div class="fwhen">Once a month, on the same day. One month tells you almost nothing. Six in a row tells you everything.</div>
+        </div>
+        <div>
+          <a href="#" class="fbtn file-link">Open the Tracker</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- HOW TO START -->
+<section class="start">
+  <div class="wrap start-in">
+    <div class="eyebrow">If you only do one thing this week</div>
+    <h2>Fill in the Benchmarks tracker. Once.</h2>
+    <p>It takes about twenty minutes if you have your invoices, and it will tell you more about your business than a month of worrying will.</p>
+    <p>Most owners already suspect where the leak is. <strong>Almost none of them are right.</strong> The number that turns out to be the problem is nearly never the one they were watching.</p>
+
+    <div class="notes">
+      <div class="note"><b>The Excel files open anywhere.</b> Excel, Google Sheets, Numbers, LibreOffice. If you use Google Sheets, open the file and choose File → Make a copy, so you're working on your own version.</div>
+      <div class="note"><b>Blue cells are yours.</b> In both spreadsheets, you only ever type in the blue cells. Everything else calculates itself — typing over a formula is the one way to break these files.</div>
+      <div class="note"><b>Nothing here needs an account.</b> No login, no subscription, no software to install. Download them once and they're yours offline, forever.</div>
+    </div>
+  </div>
+</section>
+
+<!-- NEXT -->
+<section class="next">
+  <div class="wrap next-in">
+    <div class="soon">Coming</div>
+    <h2>The full system.</h2>
+    <p>Everything you have here, plus the knowledge modules and the OFF MENU AI advisor — trained on the same experience, awake at every hour you are. You'll hear about it by email first.</p>
+    <p class="next-price"><b>€197</b> — and because you bought the Decalogue, you upgrade at the difference. What you paid today is credited toward it.</p>
+  </div>
+</section>
+
+<!-- SUPPORT -->
+<section class="support">
+  <div class="wrap support-in">
+    <div class="eyebrow">If something's wrong</div>
+    <h2>Ask us. A person answers.</h2>
+    <p>A file won't open, a link is broken, a number doesn't make sense, or you want to argue with something in the Decalogue — all of it is welcome. Especially the last one.</p>
+    <div class="mailbox">
+      <div class="mail"><a href="mailto:offmenu.business@gmail.com">offmenu.business@gmail.com</a></div>
+      <div class="sub">We read every message.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">OFF MENU</div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <span>© 2026 OFF MENU</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Grey out buttons that have no link yet — a buyer should never click into nothing */
+(function(){
+  document.querySelectorAll('.file-link').forEach(function(btn){
+    if(btn.getAttribute('href') === '#'){
+      btn.classList.add('pending');
+      btn.dataset.label = btn.textContent;
+      btn.textContent = 'Link coming soon';
+    }
+  });
+})();
+
+/* Edit mode: add ?edit to the URL. Invisible to buyers. */
+(function(){
+  if(!new URLSearchParams(location.search).has('edit')) return;
+
+  var SEL = 'h1,h2,.head p,.files-head p,.fname,.fdesc,.fwhen,.eyebrow,.start p,' +
+            '.note,.next p,.next-price,.soon,.support p,.mailbox .sub,.nav-tag,.foot-brand';
+  document.querySelectorAll(SEL).forEach(function(el){
+    el.setAttribute('contenteditable','true');
+  });
+
+  /* paste-a-link field under every file button */
+  document.querySelectorAll('.file-link').forEach(function(btn){
+    if(btn.classList.contains('pending')){
+      btn.classList.remove('pending');
+      btn.textContent = btn.dataset.label || btn.textContent;
+    }
+    var inp = document.createElement('input');
+    inp.className = 'ed-link';
+    inp.style.display = 'block';
+    inp.placeholder = 'Paste the file link here';
+    var cur = btn.getAttribute('href');
+    inp.value = (cur === '#') ? '' : cur;
+    inp.addEventListener('input', function(){
+      btn.setAttribute('href', inp.value.trim() || '#');
+    });
+    btn.parentNode.appendChild(inp);
+  });
+
+  document.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+
+  var bar = document.createElement('div');
+  bar.id = 'edbar';
+  bar.innerHTML = '<div class="hint">Click any text to edit. Paste your file links in the dashed boxes.</div>' +
+                  '<button type="button">Download updated file</button>';
+  document.body.appendChild(bar);
+
+  bar.querySelector('button').addEventListener('click', function(){
+    var clone = document.documentElement.cloneNode(true);
+    var b = clone.querySelector('#edbar');
+    if(b) b.remove();
+    clone.querySelectorAll('.ed-link').forEach(function(i){ i.remove(); });
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable');
+    });
+    clone.querySelectorAll('.file-link').forEach(function(el){
+      el.classList.remove('pending');
+      if(el.dataset.label){ el.textContent = el.dataset.label; }
+      delete el.dataset.label;
+      el.removeAttribute('data-label');
+    });
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([html], {type:'text/html'}));
+    a.download = 'welcome.html';
+    a.click();
+  });
+})();
+</script>
+</body>
+</html>
