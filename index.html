@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#141210;
-  --raised:#1E1B18;
+  --black:#242019;
+  --raised:#302A24;
   --bone:#F4F1EA;
   --orange:#FF4D00;
   --muted:#8A8378;
@@ -46,6 +46,10 @@ nav{position:sticky;top:0;z-index:50;background:rgba(20,18,16,.92);backdrop-filt
 .brand .om-strike::after{content:'';position:absolute;left:-2px;right:-2px;top:52%;height:2.5px;background:var(--orange)}
 .nav-cta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;padding:9px 18px;border:1.5px solid var(--bone);border-radius:2px;transition:background .18s,color .18s}
 .nav-cta:hover{background:var(--bone);color:var(--black)}
+.lang-toggle{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:20px;padding:3px;margin-right:14px}
+.lang-btn{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.04em;background:none;border:none;color:var(--muted);padding:6px 12px;border-radius:16px;cursor:pointer;display:flex;align-items:center;gap:5px;transition:background .15s,color .15s}
+.lang-btn.active{background:var(--orange);color:var(--bone)}
+.nav-right{display:flex;align-items:center}
 
 /* HERO */
 .hero{padding:96px 0 88px;border-bottom:1px solid var(--line)}
@@ -175,7 +179,13 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <nav>
   <div class="nav-in">
     <a href="#" class="brand"><span class="om-strike">OFF</span> MENU</a>
-    <a href="#free-gift" class="nav-cta">Free guide</a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en" aria-label="English" title="English">🇬🇧</button>
+        <button type="button" class="lang-btn" data-lang="el" aria-label="Ελληνικά" title="Ελληνικά">🇬🇷</button>
+      </div>
+      <a href="#free-gift" class="nav-cta" data-i18n-txt>Free guide</a>
+    </div>
   </div>
 </nav>
 
@@ -384,7 +394,101 @@ var EDIT = new URLSearchParams(location.search).has('edit');
   });
 })();
 
-/* ---- Edit mode: add ?edit to the URL. Invisible to normal visitors. ---- */
+/* ---- EN / EL language toggle ---- */
+(function(){
+  // [selector, occurrence-index (0-based), Greek HTML]
+  var T = [
+    ['.nav-cta',0,'Δωρεάν οδηγός'],
+    ['.eyebrow',0,'Για ιδιοκτήτες καφέ και brunch'],
+    ['.hero h1',0,'Τα περισσότερα καφέ <span class="no">δεν</span> αποτυγχάνουν εξαιτίας κακού καφέ.'],
+    ['.hero-sub',0,'Αποτυγχάνουν επειδή κανείς δεν είπε ποτέ στον ιδιοκτήτη τι πραγματικά μετράει. <strong>Εμείς το καταγράφουμε.</strong>'],
+    ['.btn-primary',0,'Πάρε τον δωρεάν οδηγό'],
+    ['.btn-ghost',0,'Δες τον Δεκάλογο'],
+    ['.hero-proof',0,'Μάθαμε μέσα από <b>τα Starbucks, KFC και Pizza Hut.</b> Το αποδεικνύουμε καθημερινά στο δικό μας brunch εστιατόριο.'],
+    ['.label',0,'Αυτό που κανείς δεν σου λέει'],
+    ['.p-item h3',0,'Τα νούμερα δεν βγαίνουν και δεν ξέρεις γιατί'],
+    ['.p-item p',0,'Το μαγαζί είναι γεμάτο. Ο καφές είναι καλός. Όμως ο μήνας βγαίνει ελλειμματικός — και χωρίς σύστημα, ψάχνεις μια διαρροή χωρίς χάρτη.'],
+    ['.p-item h3',1,'Κάθε απόφαση είναι μαντεψιά'],
+    ['.p-item p',1,'Προσθέτεις ένα πιάτο επειδή νομίζεις ότι θα πουλήσει. Βάζεις τρία άτομα βάρδια την Τρίτη επειδή σου φαίνεται σωστό. Οι μαντεψιές συσσωρεύονται σιωπηλά, μήνα με τον μήνα.'],
+    ['.p-item h3',2,'Όσοι ξέρουν, δεν το καταγράφουν'],
+    ['.p-item p',2,'Όσοι διευθύνουν κερδοφόρα μαγαζιά ξέρουν πράγματα που ποτέ δεν σου έμαθαν. Πώς να κοστολογήσεις ένα ρόφημα. Ποιο είναι πραγματικά το break-even σου. Αυτή η γνώση μένει κλειδωμένη στο μυαλό τους.'],
+    ['.eyebrow',1,'Ποιος το έγραψε'],
+    ['.who h2',0,'Γνώση από την πράξη. Όχι από τη θεωρία.'],
+    ['.who p',0,'Το OFF MENU γράφεται από κάποιον που πέρασε την καριέρα του μέσα στα μεγαλύτερα ονόματα της εστίασης — <strong>σε ανώτερες θέσεις στα Starbucks, KFC και Pizza Hut</strong> — και σήμερα διευθύνει το δικό του brunch εστιατόριο.'],
+    ['.who p',1,'Κάθε κεφάλαιο, κάθε λίστα, κάθε νούμερο σε αυτούς τους οδηγούς προέρχεται από αποφάσεις που πάρθηκαν πραγματικά, λάθη που πληρώθηκαν πραγματικά, και συστήματα που αντέχουν ένα Σάββατο με γεμάτο μαγαζί. Τίποτα εδώ δεν προέρχεται από έρευνα. Όλα προέρχονται από βιωμένη εμπειρία.'],
+    ['.who p',2,'Αυτό είναι το νόημα. Η γνώση που κρατάει ένα καφέ ανοιχτό δεν είναι ποτέ αυτή που κάποιος μπαίνει στον κόπο να καταγράψει.'],
+    ['.sig span',0,'— ιδρυτής, OFF MENU'],
+    ['.tag',0,'Δωρεάν'],
+    ['.free h2',0,'Τα 5 λάθη που κλείνουν τα καφέ.'],
+    ['.free-sub',0,'Τα πέντε πράγματα που σκοτώνουν σιωπηλά τις νέες επιχειρήσεις εστίασης τον πρώτο χρόνο — και πώς ακριβώς να αποφύγεις το καθένα. Δέκα λεπτά ανάγνωση. Τίποτα να πληρώσεις.'],
+    ['.gift-submit',0,'Στείλτε το μου'],
+    ['.gift-consent span',0,'Συμφωνώ να λαμβάνω τον δωρεάν οδηγό και περιστασιακά email από την OFF MENU. Μπορώ να διαγραφώ οποιαδήποτε στιγμή. Δείτε την <a href="/privacy">Πολιτική Απορρήτου</a> μας για το πώς χρησιμοποιούνται τα δεδομένα σας.'],
+    ['.gift-success',0,'Ελέγξτε το email σας για επιβεβαίωση — ο οδηγός είναι καθ\' οδόν.'],
+    ['.gift-note',0,'Χωρίς spam. Διαγραφή οποιαδήποτε στιγμή.'],
+    ['.eyebrow',2,'Πρώτο προϊόν'],
+    ['.prod-head h2',0,'Ο Δεκάλογος Επιτυχίας'],
+    ['.prod-head p',0,'Ο πλήρης οδηγός για να ανοίξεις — και να διατηρήσεις — μια κερδοφόρα επιχείρηση εστίασης. Δέκα κεφάλαια, βήματα δράσης σε καθένα, και τα εργαλεία για να τρέχεις τα δικά σου νούμερα από την πρώτη μέρα.'],
+    ['.ci-name',0,'Ο Δεκάλογος Επιτυχίας <span class="fmt">· PDF</span>'],
+    ['.ci-desc',0,'22 σελίδες, 10 κεφάλαια. Ψυχολογία ιδιοκτήτη, τοποθεσία, προϊόν, εμπειρία πελάτη, οικονομική διαχείριση, τιμολόγηση, εργονομία, προσωπικό. Βήματα δράσης και λίστα ελέγχου σε κάθε κεφάλαιο.'],
+    ['.ci-name',1,'Λίστα Ανοίγματος <span class="fmt">· PDF</span>'],
+    ['.ci-desc',1,'Όλα όσα πρέπει να έχεις κλειδώσει πριν ανοίξεις τις πόρτες — αυτά που κανείς δεν θυμάται μέχρι να είναι αργά να διορθωθούν.'],
+    ['.ci-name',2,'Υπολογιστής Κόστους Φαγητού <span class="fmt">· Excel</span>'],
+    ['.ci-desc',2,'Κοστολόγηση συνταγών και τιμολόγηση μενού. Μάθε τι πραγματικά σου κοστίζει κάθε πιάτο πριν αποφασίσεις πόσο θα το χρεώσεις.'],
+    ['.ci-name',3,'Καταγραφή Δεικτών Απόδοσης <span class="fmt">· Excel</span>'],
+    ['.ci-desc',3,'Φαγητό, ποτό, εργατικά, prime cost, ενοίκιο και κέρδος — μετρημένα σε σχέση με πραγματικά εύρη της αγοράς, με κάθε κατηγορία εξηγημένη σε απλή γλώσσα.'],
+    ['.price-then',0,'μετά <s>€37</s>'],
+    ['.price-note',0,'Πρώτοι 30 αγοραστές'],
+    ['.btn-buy',0,'Απόκτησε τον Δεκάλογο'],
+    ['.soon',0,'Έρχεται'],
+    ['.next h2',0,'Το πλήρες σύστημα.'],
+    ['.next p',0,'Όλα τα παραπάνω, μαζί με τις ενότητες γνώσης και τον AI σύμβουλο του OFF MENU — εκπαιδευμένο στην ίδια εμπειρία, ξύπνιο κάθε ώρα που είσαι κι εσύ.'],
+    ['.next-price',0,'<b>€197</b> — Οι αγοραστές του Δεκάλογου αναβαθμίζουν πληρώνοντας μόνο τη διαφορά.'],
+    ['.eyebrow',3,'Ερωτήσεις'],
+    ['.faq h2',0,'Πριν αγοράσεις'],
+    ['.faq-q',0,'Τι ακριβώς θα λάβω;'],
+    ['.faq-a',0,'Αρχεία PDF και Excel, που στέλνονται με email αμέσως μετά την αγορά. Τίποτα να εγκαταστήσεις, κανένας λογαριασμός, καμία συνδρομή. Είναι δικά σου, να τα κρατήσεις και να τα εκτυπώσεις.'],
+    ['.faq-q',1,'Χρειάζεται να είμαι καλός με τους αριθμούς;'],
+    ['.faq-a',1,'Όχι. Σε κάθε υπολογιστικό φύλλο, γράφεις μόνο στα μπλε κελιά — όλα τα υπόλοιπα υπολογίζονται μόνα τους. Κάθε κατηγορία εξηγείται σε απλή γλώσσα μέσα στο αρχείο, ώστε να μαθαίνεις τι σημαίνει ο αριθμός καθώς τον συμπληρώνεις.'],
+    ['.faq-q',2,'Το καφέ μου είναι ήδη ανοιχτό. Είναι ακόμα για μένα;'],
+    ['.faq-a',2,'Ειδικά για σένα. Οι περισσότεροι ιδιοκτήτες που λειτουργούν ήδη ανακαλύπτουν ότι η Καταγραφή Δεικτών τούς δείχνει ακριβώς πού πήγαιναν τα χρήματα όλο αυτό τον καιρό — συνήθως κάπου που ποτέ δεν θα το σκέφτονταν.'],
+    ['.faq-q',3,'Μπορώ να αναβαθμίσω στο πλήρες σύστημα αργότερα;'],
+    ['.faq-a',3,'Ναι. Όταν κυκλοφορήσει, πληρώνεις μόνο τη διαφορά — όχι ξανά την πλήρη τιμή. Ό,τι ξοδεύεις σήμερα πιστώνεται σε αυτό.'],
+    ['.final h2',0,'Ξεκίνα με τον δωρεάν οδηγό.'],
+    ['.final p',0,'Δέκα λεπτά. Πέντε λάθη. Χωρίς πληρωμή, χωρίς παγίδα.'],
+    ['.btn-primary',1,'Πάρε τον δωρεάν οδηγό'],
+    ['.foot-links a',0,'Πολιτική Απορρήτου']
+  ];
+  var ATTR = [
+    ['.gift-input','placeholder','Το email σας']
+  ];
+
+  var cacheHTML = new Map(), cacheAttr = new Map();
+  function setLang(lang){
+    T.forEach(function(t){
+      var els = document.querySelectorAll(t[0]), el = els[t[1]];
+      if(!el) return;
+      if(!cacheHTML.has(el)) cacheHTML.set(el, el.innerHTML);
+      el.innerHTML = (lang === 'el') ? t[2] : cacheHTML.get(el);
+    });
+    ATTR.forEach(function(t){
+      var el = document.querySelector(t[0]);
+      if(!el) return;
+      if(!cacheAttr.has(el)) cacheAttr.set(el, el.getAttribute(t[1]));
+      el.setAttribute(t[1], (lang === 'el') ? t[2] : cacheAttr.get(el));
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('offmenu-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+  });
+  var saved = null;
+  try{ saved = localStorage.getItem('offmenu-lang'); }catch(e){}
+  if(saved === 'el') setLang('el');
+})();
 (function(){
   if(!EDIT) return;
 

@@ -10,8 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
-  --black:#141210;
-  --raised:#1E1B18;
+  --black:#242019;
+  --raised:#302A24;
   --bone:#F4F1EA;
   --orange:#FF4D00;
   --muted:#8A8378;
@@ -38,6 +38,10 @@ nav{border-bottom:1px solid var(--line)}
 .brand .om-strike{position:relative}
 .brand .om-strike::after{content:'';position:absolute;left:-2px;right:-2px;top:52%;height:2.5px;background:var(--orange)}
 .nav-tag{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.lang-toggle{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:20px;padding:3px;margin-right:14px}
+.lang-btn{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.04em;background:none;border:none;color:var(--muted);padding:6px 12px;border-radius:16px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.lang-btn.active{background:var(--orange);color:var(--bone)}
+.nav-right{display:flex;align-items:center}
 
 /* HEADER */
 .head{padding:80px 0 56px;border-bottom:1px solid var(--line)}
@@ -140,7 +144,13 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <nav>
   <div class="nav-in">
     <a href="/" class="brand"><span class="om-strike">OFF</span> MENU</a>
-    <div class="nav-tag">Product One</div>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en" aria-label="English" title="English">🇬🇧</button>
+        <button type="button" class="lang-btn" data-lang="el" aria-label="Ελληνικά" title="Ελληνικά">🇬🇷</button>
+      </div>
+      <div class="nav-tag">Product One</div>
+    </div>
   </div>
 </nav>
 
@@ -279,7 +289,67 @@ footer{border-top:1px solid var(--line);padding:32px 0}
   });
 })();
 
-/* Edit mode: add ?edit to the URL. Invisible to buyers. */
+/* ---- EN / EL language toggle ---- */
+(function(){
+  var T = [
+    ['.nav-tag',0,'Πρώτο Προϊόν'],
+    ['.head h1',0,'Είσαι μέσα. Ορίστε τα πάντα.'],
+    ['.head p',0,'Ευχαριστούμε που αγόρασες τον Δεκάλογο Επιτυχίας. <strong>Όλα τα παρακάτω είναι δικά σου, για πάντα</strong> — κατέβασέ τα, τύπωσέ τα, κράτησέ τα στον πάγκο. Δεν λήγουν και δεν θα σου αφαιρεθούν.'],
+    ['.head p',1,'Αποθήκευσε αυτή τη σελίδα στα αγαπημένα σου. Είναι η μόνη διεύθυνση που θα χρειαστείς.'],
+    ['.files-head h2',0,'Τέσσερα πράγματα. Με αυτή τη σειρά.'],
+    ['.files-head p',0,'Η σειρά μετράει περισσότερο από όσο νομίζει ο κόσμος. Διάβασε πρώτα, μέτρα μετά. Το αντίστροφο είναι ο τρόπος που οι ιδιοκτήτες καταλήγουν με νούμερα που δεν ξέρουν πώς να διαχειριστούν.'],
+    ['.fname',0,'Ο Δεκάλογος Επιτυχίας <span class="fmt">· PDF · 22 σελίδες</span>'],
+    ['.fname',1,'Λίστα Ανοίγματος <span class="fmt">· PDF</span>'],
+    ['.fname',2,'Υπολογιστής Κόστους Φαγητού <span class="fmt">· Excel</span>'],
+    ['.fname',3,'Καταγραφή Δεικτών Απόδοσης <span class="fmt">· Excel</span>'],
+    ['.fdesc',0,'Δέκα κεφάλαια: ψυχολογία ιδιοκτήτη, τοποθεσία, προϊόν, εμπειρία πελάτη, οικονομική διαχείριση, τιμολόγηση, εργονομία, προσωπικό. Βήματα δράσης και λίστα ελέγχου σε κάθε ένα.'],
+    ['.fdesc',1,'Όλα όσα πρέπει να έχεις κλειδώσει πριν ανοίξουν οι πόρτες — αυτά που κανείς δεν θυμάται μέχρι να είναι πια αργά να διορθωθούν φθηνά.'],
+    ['.fdesc',2,'Δύο καρτέλες: κοστολόγηση συνταγών, έπειτα τιμολόγηση μενού. Υπολόγισε τι πραγματικά σου κοστίζει ένα πιάτο, και μετά αποφάσισε σε τι τιμή θα πουληθεί — με αυτή τη σειρά.'],
+    ['.fdesc',3,'Φαγητό, ποτό, εργατικά, prime cost, ενοίκιο, κέρδος — τα νούμερά σου μετρημένα σε σχέση με πραγματικά εύρη της αγοράς, με κάθε κατηγορία εξηγημένη σε απλή γλώσσα μέσα στο αρχείο.'],
+    ['.fwhen',0,'Διάβασέ τον μία φορά, από την αρχή ως το τέλος, πριν αγγίξεις οτιδήποτε άλλο. Μετά επίστρεψε σε αυτόν ένα κεφάλαιο τη φορά.'],
+    ['.fwhen',1,'Τύπωσέ την. Τσέκαρέ την με το χέρι. Μην εμπιστεύεσαι τη μνήμη σου την εβδομάδα του ανοίγματος — καμία μνήμη δεν δουλεύει καλά εκείνη την εβδομάδα.'],
+    ['.fwhen',2,'Χρησιμοποίησέ τον πριν τιμολογήσεις οτιδήποτε. Και ξανά κάθε φορά που ένας προμηθευτής αλλάζει τιμή.'],
+    ['.fwhen',3,'Μία φορά τον μήνα, την ίδια μέρα. Ένας μήνας δεν σου λέει σχεδόν τίποτα. Έξι στη σειρά σου λένε τα πάντα.'],
+    ['.eyebrow',0,'Τα αρχεία σου'],
+    ['.eyebrow',1,'Αν κάνεις μόνο ένα πράγμα αυτή την εβδομάδα'],
+    ['.eyebrow',2,'Αν κάτι δεν πάει καλά'],
+    ['.start h2',0,'Συμπλήρωσε την Καταγραφή Δεικτών. Μία φορά.'],
+    ['.start p',0,'Παίρνει περίπου είκοσι λεπτά αν έχεις τα τιμολόγιά σου, και θα σου πει περισσότερα για την επιχείρησή σου από ό,τι ένας μήνας ανησυχίας.'],
+    ['.start p',1,'Οι περισσότεροι ιδιοκτήτες ήδη υποψιάζονται πού είναι η διαρροή. <strong>Σχεδόν κανείς τους δεν έχει δίκιο.</strong> Το νούμερο που τελικά είναι το πρόβλημα σχεδόν ποτέ δεν είναι αυτό που παρακολουθούσαν.'],
+    ['.note',0,'<b>Τα αρχεία Excel ανοίγουν παντού.</b> Excel, Google Sheets, Numbers, LibreOffice. Αν χρησιμοποιείς Google Sheets, άνοιξε το αρχείο και επίλεξε Αρχείο → Δημιουργία αντιγράφου, ώστε να δουλεύεις στη δική σου έκδοση.'],
+    ['.note',1,'<b>Τα μπλε κελιά είναι δικά σου.</b> Και στα δύο υπολογιστικά φύλλα, γράφεις μόνο στα μπλε κελιά. Όλα τα υπόλοιπα υπολογίζονται μόνα τους — το να γράψεις πάνω σε έναν τύπο είναι ο μόνος τρόπος να χαλάσεις αυτά τα αρχεία.'],
+    ['.note',2,'<b>Τίποτα εδώ δεν χρειάζεται λογαριασμό.</b> Χωρίς σύνδεση, χωρίς συνδρομή, χωρίς λογισμικό για εγκατάσταση. Κατέβασέ τα μία φορά και είναι δικά σου, offline, για πάντα.'],
+    ['.soon',0,'Έρχεται'],
+    ['.next h2',0,'Το πλήρες σύστημα.'],
+    ['.next p',0,'Όλα όσα έχεις εδώ, μαζί με τις ενότητες γνώσης και τον AI σύμβουλο του OFF MENU — εκπαιδευμένο στην ίδια εμπειρία, ξύπνιο κάθε ώρα που είσαι κι εσύ. Θα το μάθεις πρώτα μέσω email.'],
+    ['.next-price',0,'<b>€197</b> — και επειδή αγόρασες τον Δεκάλογο, αναβαθμίζεσαι πληρώνοντας μόνο τη διαφορά. Ό,τι πλήρωσες σήμερα πιστώνεται σε αυτό.'],
+    ['.support h2',0,'Ρώτησέ μας. Απαντάει άνθρωπος.'],
+    ['.support p',0,'Ένα αρχείο δεν ανοίγει, ένας σύνδεσμος είναι χαλασμένος, ένα νούμερο δεν βγάζει νόημα, ή θέλεις να διαφωνήσεις με κάτι στον Δεκάλογο — όλα είναι ευπρόσδεκτα. Ειδικά το τελευταίο.'],
+    ['.mailbox .sub',0,'Διαβάζουμε κάθε μήνυμα.'],
+    ['.foot-links a',0,'Αρχική'],
+    ['.foot-links a',1,'Απόρρητο']
+  ];
+  var cache = new Map();
+  function setLang(lang){
+    T.forEach(function(t){
+      var els = document.querySelectorAll(t[0]), el = els[t[1]];
+      if(!el) return;
+      if(!cache.has(el)) cache.set(el, el.innerHTML);
+      el.innerHTML = (lang === 'el') ? t[2] : cache.get(el);
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('offmenu-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+  });
+  var saved = null;
+  try{ saved = localStorage.getItem('offmenu-lang'); }catch(e){}
+  if(saved === 'el') setLang('el');
+})();
 (function(){
   if(!new URLSearchParams(location.search).has('edit')) return;
 
