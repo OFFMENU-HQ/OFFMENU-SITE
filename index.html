@@ -369,7 +369,10 @@ var EDIT = new URLSearchParams(location.search).has('edit');
 
 /* ---- Free guide form ----
    Submits natively to Kit (correct encoding, exactly like Kit's own form),
-   but targets a hidden iframe so the visitor never leaves the page. */
+   but targets a hidden iframe so the visitor never leaves the page.
+   Which Kit form it submits to (English or Greek) is controlled by the
+   language toggle's setLang() function further down, which sets the
+   correct action the moment the page loads and every time it's switched. */
 (function(){
   var form  = document.getElementById('giftForm');
   var frame = document.getElementById('kitTarget');
@@ -379,7 +382,6 @@ var EDIT = new URLSearchParams(location.search).has('edit');
 
   form.addEventListener('submit', function(e){
     if(EDIT){ e.preventDefault(); return; }
-    // no preventDefault: let the browser POST for real, into the iframe
     var btn = form.querySelector('.gift-submit');
     btn.disabled = true;
     btn.textContent = 'Sending...';
@@ -387,7 +389,7 @@ var EDIT = new URLSearchParams(location.search).has('edit');
   });
 
   frame.addEventListener('load', function(){
-    if(!sent) return;               // ignore the iframe's own initial load
+    if(!sent) return;
     form.querySelector('.gift-form').style.display = 'none';
     form.querySelector('.gift-consent').style.display = 'none';
     document.getElementById('giftSuccess').style.display = 'block';
@@ -463,6 +465,10 @@ var EDIT = new URLSearchParams(location.search).has('edit');
   ];
 
   var cacheHTML = new Map(), cacheAttr = new Map();
+  var KIT_FORMS = {
+    en: 'https://app.kit.com/forms/9655594/subscriptions',
+    el: 'https://app.kit.com/forms/9724827/subscriptions'
+  };
   function setLang(lang){
     T.forEach(function(t){
       var els = document.querySelectorAll(t[0]), el = els[t[1]];
@@ -476,6 +482,8 @@ var EDIT = new URLSearchParams(location.search).has('edit');
       if(!cacheAttr.has(el)) cacheAttr.set(el, el.getAttribute(t[1]));
       el.setAttribute(t[1], (lang === 'el') ? t[2] : cacheAttr.get(el));
     });
+    var giftForm = document.getElementById('giftForm');
+    if(giftForm) giftForm.setAttribute('action', KIT_FORMS[lang] || KIT_FORMS.en);
     document.documentElement.lang = lang;
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.dataset.lang === lang);
