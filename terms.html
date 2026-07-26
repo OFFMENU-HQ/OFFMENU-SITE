@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Terms of Sale & Refund Policy — OFF MENU</title>
+<meta name="description" content="What you're buying, how delivery works, and our refund policy — explained in plain language.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#242019;
+  --raised:#302A24;
+  --bone:#F4F1EA;
+  --orange:#FF4D00;
+  --muted:#8A8378;
+  --faint:#5C574F;
+  --line:rgba(244,241,234,.12);
+  --display:'Archivo Black',Impact,sans-serif;
+  --body:'Archivo',system-ui,-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--black);color:var(--bone);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--orange)}
+::selection{background:var(--orange);color:var(--bone)}
+:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.strike{display:inline-block;width:56px;height:5px;background:var(--orange)}
+
+nav{position:sticky;top:0;z-index:50;background:rgba(36,32,25,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1060px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:var(--display);font-size:17px;letter-spacing:.12em;text-decoration:none;color:var(--bone)}
+.brand .om-strike{position:relative}
+.brand .om-strike::after{content:'';position:absolute;left:-2px;right:-2px;top:52%;height:2.5px;background:var(--orange)}
+.nav-right{display:flex;align-items:center}
+.lang-toggle{display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:20px;padding:3px;margin-right:14px}
+.lang-btn{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.04em;background:none;border:none;color:var(--muted);padding:6px 12px;border-radius:16px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.lang-btn.active{background:var(--orange);color:var(--bone)}
+.nav-back{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted);padding:9px 18px;border:1.5px solid var(--line);border-radius:2px;transition:border-color .18s,color .18s}
+.nav-back:hover{border-color:var(--bone);color:var(--bone)}
+
+.head{padding:80px 0 56px;border-bottom:1px solid var(--line)}
+.head h1{font-family:var(--display);font-size:clamp(30px,4.6vw,50px);line-height:1.05;text-transform:uppercase;margin:20px 0 14px}
+.head p{font-size:16px;color:var(--muted);max-width:52ch}
+.updated{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:22px}
+
+.summary{padding:56px 0;border-bottom:1px solid var(--line)}
+.summary-card{background:var(--bone);color:var(--black);border-radius:3px;padding:32px 36px}
+.summary-card h2{font-family:var(--display);font-size:15px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:18px}
+.summary-card ul{list-style:none}
+.summary-card li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:baseline;padding:9px 0;font-size:15px;line-height:1.6}
+.summary-card li::before{content:'';display:block;width:16px;height:3px;background:var(--orange);transform:translateY(-3px)}
+.summary-card li b{font-weight:700}
+
+.toc{padding:40px 0;border-bottom:1px solid var(--line)}
+.toc-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.toc ol{list-style:none;counter-reset:t;columns:2;column-gap:40px}
+.toc li{counter-increment:t;padding:7px 0;break-inside:avoid}
+.toc a{font-size:14.5px;color:var(--bone);text-decoration:none;display:flex;gap:12px;align-items:baseline}
+.toc a::before{content:counter(t,decimal-leading-zero);font-family:var(--display);font-size:12px;color:var(--orange)}
+.toc a:hover{color:var(--orange)}
+
+.content{padding:24px 0 72px}
+section.block{padding:44px 0;border-bottom:1px solid var(--line)}
+section.block:last-of-type{border-bottom:none}
+.block h2{font-family:var(--display);font-size:clamp(19px,2.4vw,26px);line-height:1.15;text-transform:uppercase;margin-bottom:18px;display:flex;gap:14px;align-items:baseline}
+.block h2::before{content:attr(data-n);font-size:13px;color:var(--orange)}
+.block p{font-size:15.5px;color:var(--muted);margin-bottom:13px;max-width:66ch}
+.block p b{color:var(--bone);font-weight:600}
+.block ul{list-style:none;margin:4px 0 14px}
+.block li{font-size:15.5px;color:var(--muted);padding:7px 0 7px 26px;position:relative;max-width:64ch}
+.block li::before{content:'';position:absolute;left:0;top:16px;width:14px;height:3px;background:var(--orange)}
+.block li b{color:var(--bone);font-weight:600}
+
+.contact-box{background:var(--raised);border:1px solid var(--line);border-radius:3px;padding:26px 30px;margin-top:8px}
+.contact-box .mail{font-family:var(--display);font-size:17px;letter-spacing:.02em}
+
+footer{border-top:1px solid var(--line);padding:32px 0}
+.foot-in{max-width:1060px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.foot-brand{font-family:var(--display);font-size:14px;letter-spacing:.12em;color:var(--muted)}
+.foot-links{font-size:13px;color:var(--muted);display:flex;gap:20px}
+.foot-links a{text-decoration:none;color:var(--muted)}
+.foot-links a:hover{color:var(--orange)}
+
+#edbar{position:fixed;bottom:18px;right:18px;z-index:999;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#edbar .hint{font-size:11px;color:var(--muted);background:rgba(20,18,16,.9);padding:5px 9px;border-radius:2px}
+#edbar button{font-family:var(--body);font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:11px 16px;border:none;border-radius:2px;cursor:pointer;background:var(--orange);color:var(--bone)}
+[contenteditable="true"]{outline:1px dashed rgba(255,77,0,.5);outline-offset:3px;border-radius:1px}
+[contenteditable="true"]:hover{background:rgba(255,77,0,.08)}
+[contenteditable="true"]:focus{outline:2px solid var(--orange);background:rgba(255,77,0,.12)}
+
+@media(max-width:640px){
+  .toc ol{columns:1}
+  .summary-card{padding:26px 22px}
+  .head{padding:56px 0 44px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="brand"><span class="om-strike">OFF</span> MENU</a>
+    <div class="nav-right">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button type="button" class="lang-btn active" data-lang="en" aria-label="English" title="English">🇬🇧</button>
+        <button type="button" class="lang-btn" data-lang="el" aria-label="Ελληνικά" title="Ελληνικά">🇬🇷</button>
+      </div>
+      <a href="/" class="nav-back">← Back to site</a>
+    </div>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="wrap">
+    <span class="strike"></span>
+    <h1>Terms of sale & refund policy.</h1>
+    <p>What you're buying, what happens the moment you pay, and exactly where you stand if something's wrong.</p>
+    <div class="updated">Last updated: July 2026</div>
+  </div>
+</header>
+
+<section class="summary">
+  <div class="wrap">
+    <div class="summary-card">
+      <h2>The whole policy in 30 seconds</h2>
+      <ul>
+        <li><span>Everything we sell is a <b>digital download</b> — PDFs and spreadsheets, delivered instantly, nothing physical ever ships.</span></li>
+        <li><span>Because delivery is instant, <b>by completing your purchase you agree to immediate access and waive the standard 14-day withdrawal right</b> that normally applies to online orders.</span></li>
+        <li><span>If a file is genuinely broken, missing, or not what was described, <b>we'll fix it or refund it</b> — email us and we'll sort it out.</span></li>
+        <li><span>We don't offer refunds for "changed my mind" once the files have been downloaded, since the product has been fully delivered.</span></li>
+        <li><span>Prices are in EUR. <b>Payhip</b> processes payment and handles EU/UK VAT automatically.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="toc">
+  <div class="wrap">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#who">Who you're buying from</a></li>
+      <li><a href="#what">What you're buying</a></li>
+      <li><a href="#price">Pricing & payment</a></li>
+      <li><a href="#delivery">Delivery</a></li>
+      <li><a href="#withdrawal">Your right to withdraw</a></li>
+      <li><a href="#refunds">Refunds</a></li>
+      <li><a href="#upgrade">Upgrading later</a></li>
+      <li><a href="#law">Governing law</a></li>
+      <li><a href="#contact">Contact us</a></li>
+    </ol>
+  </div>
+</section>
+
+<div class="content">
+  <div class="wrap">
+
+    <section class="block" id="who">
+      <h2 data-n="01">Who you're buying from</h2>
+      <p>OFF MENU creates operational guides and tools for café and food-business owners. Payments are processed through Payhip, which handles checkout, EU/UK VAT, and payment security on our behalf.</p>
+    </section>
+
+    <section class="block" id="what">
+      <h2 data-n="02">What you're buying</h2>
+      <p>Every product we sell is a <b>digital download</b>: PDF guides and Excel/Google Sheets tools. There is no physical item, no shipping, and no subscription unless explicitly stated on the product page.</p>
+      <p>Product descriptions on our site and on Payhip aim to be accurate and complete. If a listing is ever unclear, ask us before buying — we'd rather answer a question than have you guess.</p>
+    </section>
+
+    <section class="block" id="price">
+      <h2 data-n="03">Pricing & payment</h2>
+      <p>All prices are shown in euros (€) and include applicable VAT where required. Payhip processes your payment and automatically handles EU/UK VAT collection and remittance — you never enter card details on our own site.</p>
+      <p>Some products are offered at a limited introductory price for a set number of buyers. Once that offer period or buyer count ends, the price shown will update — we don't retroactively change what you already paid.</p>
+    </section>
+
+    <section class="block" id="delivery">
+      <h2 data-n="04">Delivery</h2>
+      <p>Delivery is <b>instant and digital</b>. The moment your payment is confirmed, you'll see your files directly on the confirmation page, and Payhip sends a receipt email with the same files attached or linked.</p>
+      <p>Some products also unlock an additional page on our own site with the same files organized for easier reference — that page checks the email you purchased with; no separate login or password is created.</p>
+      <p>If you don't see your files immediately, check your spam folder for the Payhip receipt before contacting us — that resolves most delivery questions on its own.</p>
+    </section>
+
+    <section class="block" id="withdrawal">
+      <h2 data-n="05">Your right to withdraw</h2>
+      <p>Under EU consumer law, online purchases normally come with a 14-day right to change your mind and get a full refund, no questions asked.</p>
+      <p><b>That right does not apply the same way to digital content delivered instantly.</b> By completing checkout, you explicitly acknowledge and agree that:</p>
+      <ul>
+        <li>You want delivery to begin <b>immediately</b>, before the 14-day period ends; and</li>
+        <li>You <b>lose your right of withdrawal</b> once delivery has started, in accordance with Article 16(m) of EU Directive 2011/83/EU.</li>
+      </ul>
+      <p>This is standard practice for instantly-delivered digital products, and it's the reason we can offer instant access rather than a waiting period before you can open your files.</p>
+    </section>
+
+    <section class="block" id="refunds">
+      <h2 data-n="06">Refunds</h2>
+      <p><b>We will refund you</b> if:</p>
+      <ul>
+        <li>A file is genuinely corrupted, missing, or won't open;</li>
+        <li>What you received doesn't match what the product page described; or</li>
+        <li>You were charged in error (e.g. duplicate payment).</li>
+      </ul>
+      <p>Email us and we'll either fix the issue directly or refund you — usually within a few days.</p>
+      <p><b>We generally don't refund</b> a purchase simply because you changed your mind after downloading the files, since the product has been fully and instantly delivered at that point. We ask this in good faith and expect the same in return — if something genuinely isn't right, we want to know and we'll make it right.</p>
+    </section>
+
+    <section class="block" id="upgrade">
+      <h2 data-n="07">Upgrading later</h2>
+      <p>If you buy an entry-level product and later upgrade to a larger one we offer, you only pay the difference between what you already spent and the new product's price — not the full price again. This applies for as long as the upgrade path is publicly offered.</p>
+    </section>
+
+    <section class="block" id="law">
+      <h2 data-n="08">Governing law</h2>
+      <p>These terms are governed by Greek law. If a dispute can't be resolved directly with us, EU consumers can also use the European Commission's Online Dispute Resolution platform at <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+    </section>
+
+    <section class="block" id="contact">
+      <h2 data-n="09">Contact us</h2>
+      <p>Questions about an order, a delivery problem, or a refund request:</p>
+      <div class="contact-box">
+        <p class="mail"><a href="mailto:team@offmenugr.com">team@offmenugr.com</a></p>
+        <p style="font-size:13.5px;color:var(--faint);margin-top:6px">We read every message and aim to reply within a few days.</p>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand">OFF MENU</div>
+    <div class="foot-links">
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <span>© 2026 OFF MENU</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+var EDIT = new URLSearchParams(location.search).has('edit');
+
+/* ---- EN / EL language toggle ---- */
+(function(){
+  var T = [
+    ['.nav-back',0,'← Πίσω στον ιστότοπο'],
+    ['.head h1',0,'Όροι πώλησης & πολιτική επιστροφών.'],
+    ['.head p',0,'Τι αγοράζεις, τι συμβαίνει τη στιγμή που πληρώνεις, και ακριβώς πού βρίσκεσαι αν κάτι δεν πάει καλά.'],
+    ['.updated',0,'Τελευταία ενημέρωση: Ιούλιος 2026'],
+    ['.summary-card h2',0,'Όλη η πολιτική σε 30 δευτερόλεπτα'],
+    ['.summary-card li span',0,'Ό,τι πουλάμε είναι <b>ψηφιακό αρχείο προς λήψη</b> — PDF και υπολογιστικά φύλλα, παραδίδονται αμέσως, τίποτα φυσικό δεν αποστέλλεται ποτέ.'],
+    ['.summary-card li span',1,'Επειδή η παράδοση είναι άμεση, <b>ολοκληρώνοντας την αγορά συμφωνείς με την άμεση πρόσβαση και παραιτείσαι από το κανονικό δικαίωμα υπαναχώρησης 14 ημερών</b> που ισχύει συνήθως για online παραγγελίες.'],
+    ['.summary-card li span',2,'Αν ένα αρχείο είναι πραγματικά χαλασμένο, λείπει, ή δεν είναι αυτό που περιγράφηκε, <b>θα το διορθώσουμε ή θα σου επιστρέψουμε τα χρήματα</b> — στείλε μας email και θα το τακτοποιήσουμε.'],
+    ['.summary-card li span',3,'Δεν προσφέρουμε επιστροφή χρημάτων για "άλλαξα γνώμη" μετά τη λήψη των αρχείων, καθώς το προϊόν έχει ήδη παραδοθεί πλήρως.'],
+    ['.summary-card li span',4,'Οι τιμές είναι σε EUR. Το <b>Payhip</b> επεξεργάζεται την πληρωμή και διαχειρίζεται αυτόματα τον ΦΠΑ ΕΕ/UK.'],
+    ['.toc-label',0,'Περιεχόμενα'],
+    ['.toc a',0,'Από ποιον αγοράζεις'],
+    ['.toc a',1,'Τι αγοράζεις'],
+    ['.toc a',2,'Τιμολόγηση & πληρωμή'],
+    ['.toc a',3,'Παράδοση'],
+    ['.toc a',4,'Το δικαίωμα υπαναχώρησης'],
+    ['.toc a',5,'Επιστροφές χρημάτων'],
+    ['.toc a',6,'Αναβάθμιση αργότερα'],
+    ['.toc a',7,'Εφαρμοστέο δίκαιο'],
+    ['.toc a',8,'Επικοινωνία'],
+    ['.block h2',0,'Από ποιον αγοράζεις'],
+    ['.block h2',1,'Τι αγοράζεις'],
+    ['.block h2',2,'Τιμολόγηση & πληρωμή'],
+    ['.block h2',3,'Παράδοση'],
+    ['.block h2',4,'Το δικαίωμα υπαναχώρησης'],
+    ['.block h2',5,'Επιστροφές χρημάτων'],
+    ['.block h2',6,'Αναβάθμιση αργότερα'],
+    ['.block h2',7,'Εφαρμοστέο δίκαιο'],
+    ['.block h2',8,'Επικοινωνία'],
+    ['.block p',0,'Το OFF MENU δημιουργεί επιχειρησιακούς οδηγούς και εργαλεία για ιδιοκτήτες καφέ και επιχειρήσεων εστίασης. Οι πληρωμές γίνονται μέσω του Payhip, το οποίο διαχειρίζεται το checkout, τον ΦΠΑ ΕΕ/UK, και την ασφάλεια των πληρωμών για λογαριασμό μας.'],
+    ['.block p',1,'Κάθε προϊόν που πουλάμε είναι <b>ψηφιακό αρχείο προς λήψη</b>: οδηγοί PDF και εργαλεία Excel/Google Sheets. Δεν υπάρχει φυσικό προϊόν, αποστολή, ή συνδρομή εκτός αν αναφέρεται ρητά στη σελίδα του προϊόντος.'],
+    ['.block p',2,'Οι περιγραφές των προϊόντων στον ιστότοπό μας και στο Payhip στοχεύουν να είναι ακριβείς και πλήρεις. Αν κάτι δεν είναι ξεκάθαρο, ρώτησέ μας πριν αγοράσεις — προτιμούμε να απαντήσουμε σε μια ερώτηση παρά να μαντέψεις.'],
+    ['.block p',3,'Όλες οι τιμές εμφανίζονται σε ευρώ (€) και περιλαμβάνουν τον ισχύοντα ΦΠΑ όπου απαιτείται. Το Payhip επεξεργάζεται την πληρωμή σου και διαχειρίζεται αυτόματα τη συλλογή και απόδοση του ΦΠΑ ΕΕ/UK — ποτέ δεν εισάγεις στοιχεία κάρτας στον δικό μας ιστότοπο.'],
+    ['.block p',4,'Ορισμένα προϊόντα προσφέρονται σε περιορισμένη εισαγωγική τιμή για συγκεκριμένο αριθμό αγοραστών. Μόλις λήξει αυτή η περίοδος προσφοράς ή ο αριθμός αγοραστών, η τιμή θα ενημερωθεί — δεν αλλάζουμε αναδρομικά ό,τι ήδη πλήρωσες.'],
+    ['.block p',5,'Η παράδοση είναι <b>άμεση και ψηφιακή</b>. Τη στιγμή που επιβεβαιωθεί η πληρωμή σου, θα δεις τα αρχεία σου απευθείας στη σελίδα επιβεβαίωσης, και το Payhip στέλνει email απόδειξης με τα ίδια αρχεία επισυναπτόμενα ή ως σύνδεσμο.'],
+    ['.block p',6,'Ορισμένα προϊόντα ξεκλειδώνουν επίσης μια επιπλέον σελίδα στον δικό μας ιστότοπο με τα ίδια αρχεία οργανωμένα για ευκολότερη αναφορά — αυτή η σελίδα ελέγχει το email με το οποίο αγόρασες· δεν δημιουργείται ξεχωριστή σύνδεση ή κωδικός.'],
+    ['.block p',7,'Αν δεν βλέπεις τα αρχεία σου αμέσως, έλεγξε τον φάκελο ανεπιθύμητων για την απόδειξη του Payhip πριν επικοινωνήσεις μαζί μας — αυτό λύνει τα περισσότερα ερωτήματα παράδοσης από μόνο του.'],
+    ['.block p',8,'Σύμφωνα με το ενωσιακό καταναλωτικό δίκαιο, οι online αγορές συνοδεύονται κανονικά από δικαίωμα υπαναχώρησης 14 ημερών για πλήρη επιστροφή χρημάτων, χωρίς ερωτήσεις.'],
+    ['.block p',9,'<b>Αυτό το δικαίωμα δεν ισχύει με τον ίδιο τρόπο για ψηφιακό περιεχόμενο που παραδίδεται άμεσα.</b> Ολοκληρώνοντας το checkout, αναγνωρίζεις και συμφωνείς ρητά ότι:'],
+    ['.block p',10,'Αυτό είναι συνήθης πρακτική για ψηφιακά προϊόντα που παραδίδονται άμεσα, και είναι ο λόγος που μπορούμε να προσφέρουμε άμεση πρόσβαση αντί για περίοδο αναμονής πριν μπορέσεις να ανοίξεις τα αρχεία σου.'],
+    ['.block p',11,'<b>Θα σου επιστρέψουμε τα χρήματα</b> αν:'],
+    ['.block p',12,'Στείλε μας email και είτε θα διορθώσουμε το πρόβλημα απευθείας είτε θα σου επιστρέψουμε τα χρήματα — συνήθως μέσα σε λίγες μέρες.'],
+    ['.block p',13,'<b>Γενικά δεν επιστρέφουμε χρήματα</b> απλά επειδή άλλαξες γνώμη μετά τη λήψη των αρχείων, καθώς το προϊόν έχει ήδη παραδοθεί πλήρως και άμεσα εκείνη τη στιγμή. Το ζητάμε αυτό καλόπιστα και περιμένουμε το ίδιο — αν κάτι πραγματικά δεν πάει καλά, θέλουμε να το μάθουμε και θα το διορθώσουμε.'],
+    ['.block p',14,'Αν αγοράσεις ένα εισαγωγικό προϊόν και αργότερα αναβαθμίσεις σε μεγαλύτερο, πληρώνεις μόνο τη διαφορά ανάμεσα σε ό,τι ήδη ξόδεψες και τη νέα τιμή — όχι ξανά την πλήρη τιμή. Αυτό ισχύει όσο η διαδρομή αναβάθμισης προσφέρεται δημόσια.'],
+    ['.block p',15,'Αυτοί οι όροι διέπονται από το ελληνικό δίκαιο. Αν μια διαφορά δεν μπορεί να λυθεί απευθείας μαζί μας, οι καταναλωτές της ΕΕ μπορούν επίσης να χρησιμοποιήσουν την πλατφόρμα Ηλεκτρονικής Επίλυσης Διαφορών της Ευρωπαϊκής Επιτροπής στο <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a>.'],
+    ['.block p',16,'Ερωτήσεις για μια παραγγελία, πρόβλημα παράδοσης, ή αίτημα επιστροφής χρημάτων:'],
+    ['.block li',0,'Ένα αρχείο είναι πραγματικά χαλασμένο, λείπει, ή δεν ανοίγει·'],
+    ['.block li',1,'Αυτό που έλαβες δεν ταιριάζει με την περιγραφή της σελίδας προϊόντος· ή'],
+    ['.block li',2,'Χρεώθηκες εκ λάθους (π.χ. διπλή πληρωμή).'],
+    ['.block li',3,'Θέλεις η παράδοση να ξεκινήσει <b>αμέσως</b>, πριν λήξει η περίοδος 14 ημερών· και'],
+    ['.block li',4,'<b>Χάνεις το δικαίωμα υπαναχώρησης</b> μόλις ξεκινήσει η παράδοση, σύμφωνα με το Άρθρο 16(m) της Οδηγίας ΕΕ 2011/83/ΕΕ.'],
+    ['.contact-box p',1,'Διαβάζουμε κάθε μήνυμα και στοχεύουμε να απαντήσουμε μέσα σε λίγες μέρες.'],
+    ['.foot-links a',0,'Αρχική'],
+    ['.foot-links a',1,'Απόρρητο']
+  ];
+  var cache = new Map();
+  function setLang(lang){
+    T.forEach(function(t){
+      var els = document.querySelectorAll(t[0]), el = els[t[1]];
+      if(!el) return;
+      if(!cache.has(el)) cache.set(el, el.innerHTML);
+      el.innerHTML = (lang === 'el') ? t[2] : cache.get(el);
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    try{ localStorage.setItem('offmenu-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+  });
+  var saved = null;
+  try{ saved = localStorage.getItem('offmenu-lang'); }catch(e){}
+  if(saved === 'el') setLang('el');
+})();
+
+/* Edit mode: add ?edit to the URL. Invisible to normal visitors. */
+(function(){
+  if(!EDIT) return;
+  var SEL = 'h1,h2,.head p,.updated,.summary-card li span,.summary-card h2,' +
+            '.block p,.block li,.contact-box p,.toc a,.foot-brand';
+  document.querySelectorAll(SEL).forEach(function(el){
+    el.setAttribute('contenteditable','true');
+  });
+  document.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+  var bar = document.createElement('div');
+  bar.id = 'edbar';
+  bar.innerHTML = '<div class="hint">Click any text to edit</div>' +
+                  '<button type="button">Download updated file</button>';
+  document.body.appendChild(bar);
+  bar.querySelector('button').addEventListener('click', function(){
+    var clone = document.documentElement.cloneNode(true);
+    var b = clone.querySelector('#edbar');
+    if(b) b.remove();
+    clone.querySelectorAll('[contenteditable]').forEach(function(el){
+      el.removeAttribute('contenteditable');
+    });
+    var html = '<!DOCTYPE html>\n' + clone.outerHTML;
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([html], {type:'text/html'}));
+    a.download = 'terms.html';
+    a.click();
+  });
+})();
+</script>
+</body>
+</html>
