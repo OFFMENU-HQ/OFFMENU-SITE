@@ -201,6 +201,10 @@ footer{border-top:1px solid var(--line);padding:32px 0}
           <td>When you buy a product, our payment provider processes the payment. <b>We never see or store your card numbers.</b> We receive your email and order details so we can deliver what you bought and keep the records Greek tax law requires.</td>
         </tr>
         <tr>
+          <td>Buyer verification</td>
+          <td>If a product includes a members-only page, we store the email you purchased with in a secure list so that page can confirm you're a genuine buyer when you type your email there. <b>We never email you anything for this check</b> — it happens instantly, and this record is used only to verify access, nothing else. <b>Legal basis: performance of the sale contract.</b> It's removed if a purchase is refunded.</td>
+        </tr>
+        <tr>
           <td>Basic technical data</td>
           <td>Our hosting provider automatically processes standard technical information — such as IP addresses — to serve the website securely and protect it from attacks. We don't use this to identify you.</td>
         </tr>
@@ -213,7 +217,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
       <p>A few carefully chosen services handle data on our behalf, under our instructions:</p>
       <ul>
         <li><b>Kit (ConvertKit)</b> — our email service. Stores subscriber emails and sends our emails. Kit is based in the United States and participates in recognised EU–US data-transfer frameworks.</li>
-        <li><b>Cloudflare</b> — hosts and secures this website.</li>
+        <li><b>Cloudflare</b> — hosts and secures this website, and stores the buyer-verification list described above.</li>
         <li><b>Payhip</b> — processes purchases and payments when you buy a product.</li>
       </ul>
       <p><b>We do not sell your data.</b> We do not share it with advertisers, brokers, or anyone beyond the processors above.</p>
@@ -339,7 +343,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     ['.block p',13,'Ερωτήσεις, αιτήματα, ή οτιδήποτε σχετικά με τα δεδομένα σου:'],
     ['.block p',15,'Απαντάμε σε κάθε αίτημα δεδομένων εντός 30 ημερών — συνήθως πολύ πιο γρήγορα.'],
     ['.block li',0,'<b>Kit (ConvertKit)</b> — η υπηρεσία email μας. Αποθηκεύει τα email των συνδρομητών και στέλνει τα email μας. Το Kit εδρεύει στις ΗΠΑ και συμμετέχει σε αναγνωρισμένα πλαίσια μεταφοράς δεδομένων ΕΕ–ΗΠΑ.'],
-    ['.block li',1,'<b>Cloudflare</b> — φιλοξενεί και προστατεύει αυτόν τον ιστότοπο.'],
+    ['.block li',1,'<b>Cloudflare</b> — φιλοξενεί και προστατεύει αυτόν τον ιστότοπο, και αποθηκεύει τη λίστα επαλήθευσης αγοραστών που περιγράφεται παραπάνω.'],
     ['.block li',2,'<b>Payhip</b> — επεξεργάζεται τις αγορές και τις πληρωμές όταν αγοράζεις ένα προϊόν.'],
     ['.block li',3,'<b>Το email σου:</b> μέχρι να διαγραφείς ή να μας ζητήσεις να το διαγράψουμε.'],
     ['.block li',4,'<b>Αρχεία αγορών:</b> για όσο διάστημα απαιτεί η ελληνική φορολογική και λογιστική νομοθεσία.'],
@@ -356,8 +360,10 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     ['.dtable td',1,'Όταν ζητάς τον δωρεάν οδηγό ή εγγράφεσαι για ενημερώσεις. Το χρησιμοποιούμε για να στείλουμε τον οδηγό, να σου στείλουμε χρήσιμο περιεχόμενο OFF MENU, και περιστασιακά να σου πούμε για τα προϊόντα μας. <b>Νομική βάση: η ρητή συγκατάθεσή σου</b> — το κουτάκι που τσεκάρεις στη φόρμα. Μπορείς να την ανακαλέσεις οποιαδήποτε στιγμή.'],
     ['.dtable td',2,'Στοιχεία αγοράς'],
     ['.dtable td',3,'Όταν αγοράζεις ένα προϊόν, ο πάροχος πληρωμών μας επεξεργάζεται την πληρωμή. <b>Ποτέ δεν βλέπουμε ή αποθηκεύουμε τα στοιχεία της κάρτας σου.</b> Λαμβάνουμε το email σου και τα στοιχεία της παραγγελίας ώστε να παραδώσουμε αυτό που αγόρασες και να τηρήσουμε τα αρχεία που απαιτεί ο ελληνικός νόμος.'],
-    ['.dtable td',4,'Βασικά τεχνικά δεδομένα'],
-    ['.dtable td',5,'Ο πάροχος φιλοξενίας μας επεξεργάζεται αυτόματα τυπικές τεχνικές πληροφορίες — όπως διευθύνσεις IP — για να εξυπηρετεί τον ιστότοπο με ασφάλεια και να τον προστατεύει από επιθέσεις. Δεν τις χρησιμοποιούμε για να σε ταυτοποιήσουμε.'],
+    ['.dtable td',4,'Επιβεβαίωση αγοραστή'],
+    ['.dtable td',5,'Αν ένα προϊόν περιλαμβάνει σελίδα μόνο για αγοραστές, αποθηκεύουμε το email με το οποίο αγόρασες σε μια ασφαλή λίστα, ώστε αυτή η σελίδα να μπορεί να επιβεβαιώσει ότι είσαι πραγματικός αγοραστής όταν γράψεις το email σου εκεί. <b>Ποτέ δεν σου στέλνουμε email για αυτόν τον έλεγχο</b> — γίνεται ακαριαία, και αυτό το αρχείο χρησιμοποιείται μόνο για επαλήθευση πρόσβασης, τίποτα άλλο. <b>Νομική βάση: εκτέλεση της σύμβασης πώλησης.</b> Διαγράφεται αν μια αγορά επιστραφεί.'],
+    ['.dtable td',6,'Βασικά τεχνικά δεδομένα'],
+    ['.dtable td',7,'Ο πάροχος φιλοξενίας μας επεξεργάζεται αυτόματα τυπικές τεχνικές πληροφορίες — όπως διευθύνσεις IP — για να εξυπηρετεί τον ιστότοπο με ασφάλεια και να τον προστατεύει από επιθέσεις. Δεν τις χρησιμοποιούμε για να σε ταυτοποιήσουμε.'],
     ['.contact-box p',1,'Απαντάμε σε κάθε αίτημα δεδομένων εντός 30 ημερών — συνήθως πολύ πιο γρήγορα.'],
     ['.foot-links a',0,'Αρχική'],
     ['.foot-links a',1,'Όροι']
