@@ -141,6 +141,35 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 </head>
 <body>
 
+<!-- ACCESS GATE — shown until the buyer's email is verified against the Worker -->
+<div id="accessGate" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="max-width:420px;width:100%;text-align:center;">
+    <div style="font-family:var(--display);font-size:22px;letter-spacing:.02em;margin-bottom:6px;">
+      <span style="background:var(--orange);color:var(--bone);padding:2px 8px;border-radius:2px;">OFF</span> MENU
+    </div>
+    <h1 style="font-family:var(--display);font-size:clamp(20px,3vw,28px);text-transform:uppercase;margin:18px 0 10px;">
+      This page is for buyers only.
+    </h1>
+    <p style="font-size:15px;color:var(--muted);margin-bottom:22px;">
+      Enter the email address you used to purchase — we'll check it instantly, nothing gets sent.
+    </p>
+    <input id="gateEmail" type="email" placeholder="you@example.com"
+      style="width:100%;padding:14px 16px;font-size:15px;border:1px solid var(--line);border-radius:2px;background:var(--raised);color:var(--bone);margin-bottom:12px;">
+    <button id="gateSubmit" type="button"
+      style="width:100%;padding:14px 16px;font-size:15px;font-weight:700;background:var(--orange);color:var(--bone);border:none;border-radius:2px;cursor:pointer;">
+      Access my files
+    </button>
+    <p id="gateError" style="display:none;font-size:13px;color:var(--orange);margin-top:14px;">
+      We couldn't find that email on a completed purchase. Double-check for typos, or contact
+      <a href="mailto:team@offmenugr.com" style="color:inherit;">team@offmenugr.com</a> if you're sure it's right.
+    </p>
+    <p id="gateChecking" style="display:none;font-size:13px;color:var(--muted);margin-top:14px;">Checking…</p>
+  </div>
+</div>
+
+<!-- REAL CONTENT — hidden until the gate above passes -->
+<div id="realContent" style="display:none;">
+
 <nav>
   <div class="nav-in">
     <a href="/" class="brand"><span class="om-strike">OFF</span> MENU</a>
@@ -409,5 +438,70 @@ footer{border-top:1px solid var(--line);padding:32px 0}
   });
 })();
 </script>
+</div><!-- /realContent -->
+
+<script>
+/* ---- Buyer access gate ----
+   Checks the entered email against the Worker's KV list of paid buyers.
+   Nothing is emailed; the check is instant and synchronous. Remembers a
+   verified email for this browser session so buyers aren't asked twice
+   while revisiting during the same visit. */
+(function(){
+  var VERIFY_URL = 'https://api.offmenugr.com/verify';
+  var gate = document.getElementById('accessGate');
+  var content = document.getElementById('realContent');
+  var input = document.getElementById('gateEmail');
+  var button = document.getElementById('gateSubmit');
+  var errorMsg = document.getElementById('gateError');
+  var checkingMsg = document.getElementById('gateChecking');
+
+  function unlock(email){
+    try { sessionStorage.setItem('offmenu-verified-email', email); } catch(e){}
+    gate.style.display = 'none';
+    content.style.display = 'block';
+  }
+
+  function check(email){
+    errorMsg.style.display = 'none';
+    checkingMsg.style.display = 'block';
+    button.disabled = true;
+    fetch(VERIFY_URL + '?email=' + encodeURIComponent(email))
+      .then(function(res){ return res.json(); })
+      .then(function(data){
+        checkingMsg.style.display = 'none';
+        button.disabled = false;
+        if(data && data.access){
+          unlock(email);
+        } else {
+          errorMsg.style.display = 'block';
+        }
+      })
+      .catch(function(){
+        checkingMsg.style.display = 'none';
+        button.disabled = false;
+        errorMsg.textContent = 'Something went wrong checking your email. Please try again in a moment.';
+        errorMsg.style.display = 'block';
+      });
+  }
+
+  button.addEventListener('click', function(){
+    var email = (input.value || '').trim().toLowerCase();
+    if(!email) return;
+    check(email);
+  });
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter') button.click();
+  });
+
+  // If this browser already verified once this session, skip re-checking
+  var saved = null;
+  try { saved = sessionStorage.getItem('offmenu-verified-email'); } catch(e){}
+  if(saved){
+    gate.style.display = 'none';
+    content.style.display = 'block';
+  }
+})();
+</script>
+
 </body>
 </html>
