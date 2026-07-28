@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Welcome — OFF MENU</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
   --black:#242019;
@@ -141,7 +142,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <body>
 
 <!-- ACCESS GATE — shown until the buyer's email is verified against the Worker -->
-<div id="accessGate" style="min-height: 100vh; display: none; align-items: center; justify-content: center; padding: 24px;">
+<div id="accessGate" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div style="max-width:420px;width:100%;text-align:center;">
     <div style="font-family:var(--display);font-size:22px;letter-spacing:.02em;margin-bottom:6px;">
       <span style="background:var(--orange);color:var(--bone);padding:2px 8px;border-radius:2px;">OFF</span> MENU
@@ -152,20 +153,22 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     <p style="font-size:15px;color:var(--muted);margin-bottom:22px;">
       Enter the email address you used to purchase — we'll check it instantly, nothing gets sent.
     </p>
-    <input id="gateEmail" type="email" placeholder="you@example.com" style="width:100%;padding:14px 16px;font-size:15px;border:1px solid var(--line);border-radius:2px;background:var(--raised);color:var(--bone);margin-bottom:12px;">
-    <button id="gateSubmit" type="button" style="width:100%;padding:14px 16px;font-size:15px;font-weight:700;background:var(--orange);color:var(--bone);border:none;border-radius:2px;cursor:pointer;">
+    <input id="gateEmail" type="email" placeholder="you@example.com"
+      style="width:100%;padding:14px 16px;font-size:15px;border:1px solid var(--line);border-radius:2px;background:var(--raised);color:var(--bone);margin-bottom:12px;">
+    <button id="gateSubmit" type="button"
+      style="width:100%;padding:14px 16px;font-size:15px;font-weight:700;background:var(--orange);color:var(--bone);border:none;border-radius:2px;cursor:pointer;">
       Access my files
     </button>
     <p id="gateError" style="display:none;font-size:13px;color:var(--orange);margin-top:14px;">
       We couldn't find that email on a completed purchase. Double-check for typos, or contact
       <a href="mailto:team@offmenugr.com" style="color:inherit;">team@offmenugr.com</a> if you're sure it's right.
     </p>
-    <p id="gateChecking" style="display: none; font-size: 13px; color: var(--muted); margin-top: 14px;">Checking…</p>
+    <p id="gateChecking" style="display:none;font-size:13px;color:var(--muted);margin-top:14px;">Checking…</p>
   </div>
 </div>
 
 <!-- REAL CONTENT — hidden until the gate above passes -->
-<div id="realContent" style="display: block;">
+<div id="realContent" style="display:none;">
 
 <nav>
   <div class="nav-in">
@@ -209,7 +212,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
           <div class="fwhen">Read it once, start to finish, before you touch anything else. Then come back to it a chapter at a time.</div>
         </div>
         <div>
-          <a href="https://drive.google.com/file/d/1T6DAgASTqdW-QsOaY8w_Hfn_29oPxobQ/view?usp=drive_link" class="fbtn file-link">Open the Decalogue</a>
+          <a href="#" class="fbtn file-link" data-href-en="#" data-href-el="#">Open the Decalogue</a>
         </div>
       </div>
 
@@ -221,7 +224,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
           <div class="fwhen">Print it. Tick it by hand. Don't trust your memory on opening week — nobody's memory works that week.</div>
         </div>
         <div>
-          <a href="https://drive.google.com/file/d/1eKVlDb4UpxVP1QeueK70C0ND_wZNgmkk/view?usp=drive_link" class="fbtn file-link">Open the Checklist</a>
+          <a href="#" class="fbtn file-link" data-href-en="#" data-href-el="#">Open the Checklist</a>
         </div>
       </div>
 
@@ -233,7 +236,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
           <div class="fwhen">Use it before you price anything. Then again every time a supplier changes a price on you.</div>
         </div>
         <div>
-          <a href="https://docs.google.com/spreadsheets/d/1cGRFBW7tZRXz8pGEu83BFmpxVqDkgBXN/edit?usp=drive_link&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true" class="fbtn file-link">Open the Calculator</a>
+          <a href="#" class="fbtn file-link" data-href-en="#" data-href-el="#">Open the Calculator</a>
         </div>
       </div>
 
@@ -245,7 +248,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
           <div class="fwhen">Once a month, on the same day. One month tells you almost nothing. Six in a row tells you everything.</div>
         </div>
         <div>
-          <a href="https://docs.google.com/spreadsheets/d/1V_FsRYpcJ8RvnIuW7klM0guK56KGIj0E/edit?usp=drive_link&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true" class="fbtn file-link">Open the Tracker</a>
+          <a href="#" class="fbtn file-link" data-href-en="#" data-href-el="#">Open the Tracker</a>
         </div>
       </div>
 
@@ -305,16 +308,26 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 </footer>
 
 <script>
-/* Grey out buttons that have no link yet — a buyer should never click into nothing */
-(function(){
+/* Sync each file button's visible link to the current language, and grey
+   out any button whose link for that language hasn't been pasted in yet.
+   Runs on page load, and again every time the language toggle is clicked. */
+function syncFileLinks(lang){
   document.querySelectorAll('.file-link').forEach(function(btn){
-    if(btn.getAttribute('href') === '#'){
+    var target = (lang === 'el') ? (btn.dataset.hrefEl || '#') : (btn.dataset.hrefEn || '#');
+    btn.setAttribute('href', target);
+    if(target === '#'){
+      if(!btn.classList.contains('pending')){
+        btn.dataset.label = btn.dataset.label || btn.textContent;
+        btn.textContent = 'Link coming soon';
+      }
       btn.classList.add('pending');
-      btn.dataset.label = btn.textContent;
-      btn.textContent = 'Link coming soon';
+    } else {
+      btn.classList.remove('pending');
+      btn.textContent = btn.dataset.label || btn.textContent;
     }
   });
-})();
+}
+syncFileLinks('en');
 
 /* ---- EN / EL language toggle ---- */
 (function(){
@@ -366,6 +379,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
       el.innerHTML = (lang === 'el') ? t[2] : cache.get(el);
     });
     document.documentElement.lang = lang;
+    syncFileLinks(lang);
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.dataset.lang === lang);
     });
@@ -387,22 +401,38 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     el.setAttribute('contenteditable','true');
   });
 
-  /* paste-a-link field under every file button */
+  /* paste-a-link fields under every file button — one for English, one for Greek */
   document.querySelectorAll('.file-link').forEach(function(btn){
     if(btn.classList.contains('pending')){
       btn.classList.remove('pending');
       btn.textContent = btn.dataset.label || btn.textContent;
     }
-    var inp = document.createElement('input');
-    inp.className = 'ed-link';
-    inp.style.display = 'block';
-    inp.placeholder = 'Paste the file link here';
-    var cur = btn.getAttribute('href');
-    inp.value = (cur === '#') ? '' : cur;
-    inp.addEventListener('input', function(){
-      btn.setAttribute('href', inp.value.trim() || '#');
+
+    var enInp = document.createElement('input');
+    enInp.className = 'ed-link';
+    enInp.style.display = 'block';
+    enInp.placeholder = '🇬🇧 Paste the ENGLISH file link here';
+    enInp.value = (btn.dataset.hrefEn === '#' || !btn.dataset.hrefEn) ? '' : btn.dataset.hrefEn;
+    enInp.addEventListener('input', function(){
+      var v = enInp.value.trim() || '#';
+      btn.setAttribute('data-href-en', v);
+      if(document.documentElement.lang !== 'el') btn.setAttribute('href', v);
     });
-    btn.parentNode.appendChild(inp);
+
+    var elInp = document.createElement('input');
+    elInp.className = 'ed-link';
+    elInp.style.display = 'block';
+    elInp.style.marginTop = '6px';
+    elInp.placeholder = '🇬🇷 Paste the GREEK file link here';
+    elInp.value = (btn.dataset.hrefEl === '#' || !btn.dataset.hrefEl) ? '' : btn.dataset.hrefEl;
+    elInp.addEventListener('input', function(){
+      var v = elInp.value.trim() || '#';
+      btn.setAttribute('data-href-el', v);
+      if(document.documentElement.lang === 'el') btn.setAttribute('href', v);
+    });
+
+    btn.parentNode.appendChild(enInp);
+    btn.parentNode.appendChild(elInp);
   });
 
   document.querySelectorAll('a').forEach(function(a){
@@ -502,6 +532,5 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 })();
 </script>
 
-
-
-</body></html>
+</body>
+</html>
