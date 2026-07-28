@@ -368,6 +368,21 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <script>
 var EDIT = new URLSearchParams(location.search).has('edit');
 
+/* ---- Site event tracking ----
+   Sends a single, anonymous ping to our own Worker when a key action
+   happens (buy click, guide signup, language switch). No cookies, no
+   personal data, nothing tied to who you are — just a running count.
+   Fails completely silently: if it doesn't reach the Worker for any
+   reason, it never affects the visitor's experience of the page. */
+function trackEvent(name){
+  if(EDIT) return;
+  try{
+    fetch('https://api.offmenugr.com/track?event=' + encodeURIComponent(name), {
+      method: 'POST', mode: 'cors', keepalive: true
+    }).catch(function(){});
+  }catch(e){}
+}
+
 /* ---- Free guide form ----
    Submits natively to Kit (correct encoding, exactly like Kit's own form),
    but targets a hidden iframe so the visitor never leaves the page.
@@ -387,6 +402,7 @@ var EDIT = new URLSearchParams(location.search).has('edit');
     btn.disabled = true;
     btn.textContent = 'Sending...';
     sent = true;
+    trackEvent('free_guide_submit');
   });
 
   frame.addEventListener('load', function(){
@@ -394,6 +410,17 @@ var EDIT = new URLSearchParams(location.search).has('edit');
     form.querySelector('.gift-form').style.display = 'none';
     form.querySelector('.gift-consent').style.display = 'none';
     document.getElementById('giftSuccess').style.display = 'block';
+    trackEvent('free_guide_success');
+  });
+})();
+
+/* ---- Buy button click ---- */
+(function(){
+  document.querySelectorAll('.btn-buy').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if(EDIT) return;
+      trackEvent('buy_click');
+    });
   });
 })();
 
@@ -493,7 +520,10 @@ var EDIT = new URLSearchParams(location.search).has('edit');
     try{ localStorage.setItem('offmenu-lang', lang); }catch(e){}
   }
   document.querySelectorAll('.lang-btn').forEach(function(b){
-    b.addEventListener('click', function(){ setLang(b.dataset.lang); });
+    b.addEventListener('click', function(){
+      setLang(b.dataset.lang);
+      trackEvent(b.dataset.lang === 'el' ? 'lang_toggle_el' : 'lang_toggle_en');
+    });
   });
   var saved = null;
   try{ saved = localStorage.getItem('offmenu-lang'); }catch(e){}
