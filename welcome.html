@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="el"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Welcome — OFF MENU</title>
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
   --black:#242019;
@@ -141,7 +142,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <body>
 
 <!-- ACCESS GATE — shown until the buyer's email is verified against the Worker -->
-<div id="accessGate" style="min-height: 100vh; display: none; align-items: center; justify-content: center; padding: 24px;">
+<div id="accessGate" style="min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div style="max-width:420px;width:100%;text-align:center;">
     <div style="font-family:var(--display);font-size:22px;letter-spacing:.02em;margin-bottom:6px;">
       <span style="background:var(--orange);color:var(--bone);padding:2px 8px;border-radius:2px;">OFF</span> MENU
@@ -152,30 +153,32 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     <p style="font-size:15px;color:var(--muted);margin-bottom:22px;">
       Enter the email address you used to purchase — we'll check it instantly, nothing gets sent.
     </p>
-    <input id="gateEmail" type="email" placeholder="you@example.com" style="width:100%;padding:14px 16px;font-size:15px;border:1px solid var(--line);border-radius:2px;background:var(--raised);color:var(--bone);margin-bottom:12px;">
-    <button id="gateSubmit" type="button" style="width:100%;padding:14px 16px;font-size:15px;font-weight:700;background:var(--orange);color:var(--bone);border:none;border-radius:2px;cursor:pointer;">
+    <input id="gateEmail" type="email" placeholder="you@example.com"
+      style="width:100%;padding:14px 16px;font-size:15px;border:1px solid var(--line);border-radius:2px;background:var(--raised);color:var(--bone);margin-bottom:12px;">
+    <button id="gateSubmit" type="button"
+      style="width:100%;padding:14px 16px;font-size:15px;font-weight:700;background:var(--orange);color:var(--bone);border:none;border-radius:2px;cursor:pointer;">
       Access my files
     </button>
     <p id="gateError" style="display:none;font-size:13px;color:var(--orange);margin-top:14px;">
       We couldn't find that email on a completed purchase. Double-check for typos, or contact
       <a href="mailto:team@offmenugr.com" style="color:inherit;">team@offmenugr.com</a> if you're sure it's right.
     </p>
-    <p id="gateChecking" style="display: none; font-size: 13px; color: var(--muted); margin-top: 14px;">Checking…</p>
+    <p id="gateChecking" style="display:none;font-size:13px;color:var(--muted);margin-top:14px;">Checking…</p>
   </div>
 </div>
 
 <!-- REAL CONTENT — hidden until the gate above passes -->
-<div id="realContent" style="display: block;">
+<div id="realContent" style="display:none;">
 
 <nav>
   <div class="nav-in">
     <a href="/" class="brand"><span class="om-strike">OFF</span> MENU</a>
     <div class="nav-right">
       <div class="lang-toggle" role="group" aria-label="Language">
-        <button type="button" class="lang-btn" data-lang="en" aria-label="English" title="English">🇬🇧</button>
-        <button type="button" class="lang-btn active" data-lang="el" aria-label="Ελληνικά" title="Ελληνικά">🇬🇷</button>
+        <button type="button" class="lang-btn active" data-lang="en" aria-label="English" title="English">🇬🇧</button>
+        <button type="button" class="lang-btn" data-lang="el" aria-label="Ελληνικά" title="Ελληνικά">🇬🇷</button>
       </div>
-      <div class="nav-tag">Πρώτο Προϊόν</div>
+      <div class="nav-tag">Product One</div>
     </div>
   </div>
 </nav>
@@ -184,9 +187,9 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <header class="head">
   <div class="wrap">
     <span class="strike"></span>
-    <h1>Είσαι μέσα. Ορίστε τα πάντα.</h1>
-    <p>Ευχαριστούμε που αγόρασες το Kickoff Bundle. <strong>Όλα τα παρακάτω είναι δικά σου, για πάντα</strong> — κατέβασέ τα, τύπωσέ τα, κράτησέ τα στον πάγκο. Δεν λήγουν και δεν θα σου αφαιρεθούν.</p>
-    <p>Αποθήκευσε αυτή τη σελίδα στα αγαπημένα σου. Είναι η μόνη διεύθυνση που θα χρειαστείς.</p>
+    <h1>You're in. Here's everything.</h1>
+    <p>Thank you for buying the Kickoff Bundle. <strong>Everything below is yours to keep</strong> — download it, print it, keep it on the pass. It doesn't expire and it won't be taken away.</p>
+    <p>Bookmark this page. It's the only address you'll need.</p>
   </div>
 </header>
 
@@ -194,9 +197,9 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <section class="files">
   <div class="wrap">
     <div class="files-head">
-      <div class="eyebrow">Τα αρχεία σου</div>
-      <h2>Τέσσερα πράγματα. Με αυτή τη σειρά.</h2>
-      <p>Η σειρά μετράει περισσότερο από όσο νομίζει ο κόσμος. Διάβασε πρώτα, μέτρα μετά. Το αντίστροφο είναι ο τρόπος που οι ιδιοκτήτες καταλήγουν με νούμερα που δεν ξέρουν πώς να διαχειριστούν.</p>
+      <div class="eyebrow">Your files</div>
+      <h2>Four things. In this order.</h2>
+      <p>The order matters more than people expect. Read first, then measure. Doing it the other way round is how owners end up with numbers they don't know how to act on.</p>
     </div>
 
     <div class="card">
@@ -204,48 +207,48 @@ footer{border-top:1px solid var(--line);padding:32px 0}
       <div class="frow">
         <div class="fnum">01</div>
         <div>
-          <div class="fname">Ο Δεκάλογος Επιτυχίας <span class="fmt">· PDF · 22 σελίδες</span></div>
-          <div class="fdesc">Δέκα κεφάλαια: ψυχολογία ιδιοκτήτη, τοποθεσία, προϊόν, εμπειρία πελάτη, οικονομική διαχείριση, τιμολόγηση, εργονομία, προσωπικό. Βήματα δράσης και λίστα ελέγχου σε κάθε ένα.</div>
-          <div class="fwhen">Διάβασέ τον μία φορά, από την αρχή ως το τέλος, πριν αγγίξεις οτιδήποτε άλλο. Μετά επίστρεψε σε αυτόν ένα κεφάλαιο τη φορά.</div>
+          <div class="fname">The Success Decalogue <span class="fmt">· PDF · 22 pages</span></div>
+          <div class="fdesc">Ten chapters: owner psychology, location, product, customer experience, financial management, pricing, ergonomics, staff. Action steps and a checklist in every one.</div>
+          <div class="fwhen">Read it once, start to finish, before you touch anything else. Then come back to it a chapter at a time.</div>
         </div>
         <div>
-          <a href="https://drive.google.com/file/d/1_uRo_AjHaBp6AW9-zxu_8Gni_m_Bkitk/view?usp=sharing" class="fbtn file-link" data-href-en="https://drive.google.com/file/d/1T6DAgASTqdW-QsOaY8w_Hfn_29oPxobQ/view?usp=sharing" data-href-el="https://drive.google.com/file/d/1_uRo_AjHaBp6AW9-zxu_8Gni_m_Bkitk/view?usp=sharing">Open the Decalogue</a>
+          <a href="#" class="fbtn file-link" data-href-en="https://drive.google.com/file/d/1T6DAgASTqdW-QsOaY8w_Hfn_29oPxobQ/view?usp=sharing" data-href-el="https://drive.google.com/file/d/1_uRo_AjHaBp6AW9-zxu_8Gni_m_Bkitk/view?usp=sharing">Open the Decalogue</a>
         </div>
       </div>
 
       <div class="frow">
         <div class="fnum">02</div>
         <div>
-          <div class="fname">Λίστα Ανοίγματος <span class="fmt">· PDF</span></div>
-          <div class="fdesc">Όλα όσα πρέπει να έχεις κλειδώσει πριν ανοίξουν οι πόρτες — αυτά που κανείς δεν θυμάται μέχρι να είναι πια αργά να διορθωθούν φθηνά.</div>
-          <div class="fwhen">Τύπωσέ την. Τσέκαρέ την με το χέρι. Μην εμπιστεύεσαι τη μνήμη σου την εβδομάδα του ανοίγματος — καμία μνήμη δεν δουλεύει καλά εκείνη την εβδομάδα.</div>
+          <div class="fname">Opening Checklist <span class="fmt">· PDF</span></div>
+          <div class="fdesc">Everything that has to be locked in before the doors open — the things nobody remembers until it's too late to fix them cheaply.</div>
+          <div class="fwhen">Print it. Tick it by hand. Don't trust your memory on opening week — nobody's memory works that week.</div>
         </div>
         <div>
-          <a href="https://drive.google.com/file/d/1J_zxlBhNdJ0lm_XcfEx0nUrYLjM6KQ_d/view?usp=sharing" class="fbtn file-link" data-href-en="https://drive.google.com/file/d/1eKVlDb4UpxVP1QeueK70C0ND_wZNgmkk/view?usp=sharing" data-href-el="https://drive.google.com/file/d/1J_zxlBhNdJ0lm_XcfEx0nUrYLjM6KQ_d/view?usp=sharing">Open the Checklist</a>
+          <a href="#" class="fbtn file-link" data-href-en="https://drive.google.com/file/d/1eKVlDb4UpxVP1QeueK70C0ND_wZNgmkk/view?usp=sharing" data-href-el="https://drive.google.com/file/d/1J_zxlBhNdJ0lm_XcfEx0nUrYLjM6KQ_d/view?usp=sharing">Open the Checklist</a>
         </div>
       </div>
 
       <div class="frow">
         <div class="fnum">03</div>
         <div>
-          <div class="fname">Υπολογιστής Κόστους Φαγητού <span class="fmt">· Excel</span></div>
-          <div class="fdesc">Δύο καρτέλες: κοστολόγηση συνταγών, έπειτα τιμολόγηση μενού. Υπολόγισε τι πραγματικά σου κοστίζει ένα πιάτο, και μετά αποφάσισε σε τι τιμή θα πουληθεί — με αυτή τη σειρά.</div>
-          <div class="fwhen">Χρησιμοποίησέ τον πριν τιμολογήσεις οτιδήποτε. Και ξανά κάθε φορά που ένας προμηθευτής αλλάζει τιμή.</div>
+          <div class="fname">Food Cost Calculator <span class="fmt">· Excel</span></div>
+          <div class="fdesc">Two tabs: recipe costing, then menu pricing. Work out what a plate actually costs you, then decide what it should sell for — in that order.</div>
+          <div class="fwhen">Use it before you price anything. Then again every time a supplier changes a price on you.</div>
         </div>
         <div>
-          <a href="https://docs.google.com/spreadsheets/d/1ngkRHqCv_heJy3wYj2aNzm6E9bmKiTHi/edit?usp=sharing&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true" class="fbtn file-link" data-href-en="https://docs.google.com/spreadsheets/d/1cGRFBW7tZRXz8pGEu83BFmpxVqDkgBXN/edit?usp=share_link&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true" data-href-el="https://docs.google.com/spreadsheets/d/1ngkRHqCv_heJy3wYj2aNzm6E9bmKiTHi/edit?usp=sharing&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true">Open the Calculator</a>
+          <a href="#" class="fbtn file-link" data-href-en="https://docs.google.com/spreadsheets/d/1cGRFBW7tZRXz8pGEu83BFmpxVqDkgBXN/edit?usp=share_link&ouid=106661271390326191246&rtpof=true&sd=true" data-href-el="https://docs.google.com/spreadsheets/d/1ngkRHqCv_heJy3wYj2aNzm6E9bmKiTHi/edit?usp=sharing&ouid=106661271390326191246&rtpof=true&sd=true">Open the Calculator</a>
         </div>
       </div>
 
       <div class="frow">
         <div class="fnum">04</div>
         <div>
-          <div class="fname">Καταγραφή Δεικτών Απόδοσης <span class="fmt">· Excel</span></div>
-          <div class="fdesc">Φαγητό, ποτό, εργατικά, prime cost, ενοίκιο, κέρδος — τα νούμερά σου μετρημένα σε σχέση με πραγματικά εύρη της αγοράς, με κάθε κατηγορία εξηγημένη σε απλή γλώσσα μέσα στο αρχείο.</div>
-          <div class="fwhen">Μία φορά τον μήνα, την ίδια μέρα. Ένας μήνας δεν σου λέει σχεδόν τίποτα. Έξι στη σειρά σου λένε τα πάντα.</div>
+          <div class="fname">Benchmarks Tracker <span class="fmt">· Excel</span></div>
+          <div class="fdesc">Food, drink, labour, prime cost, rent, profit — your numbers measured against real industry ranges, with every category explained in plain language inside the file.</div>
+          <div class="fwhen">Once a month, on the same day. One month tells you almost nothing. Six in a row tells you everything.</div>
         </div>
         <div>
-          <a href="https://docs.google.com/spreadsheets/d/1ehaNZE6X3eYZ0eenMjzU_BMmbc1qmfdv/edit?usp=sharing&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true" class="fbtn file-link" data-href-en="https://docs.google.com/spreadsheets/d/1V_FsRYpcJ8RvnIuW7klM0guK56KGIj0E/edit?usp=sharing&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true" data-href-el="https://docs.google.com/spreadsheets/d/1ehaNZE6X3eYZ0eenMjzU_BMmbc1qmfdv/edit?usp=sharing&amp;ouid=106661271390326191246&amp;rtpof=true&amp;sd=true">Open the Tracker</a>
+          <a href="#" class="fbtn file-link" data-href-en="https://docs.google.com/spreadsheets/d/1V_FsRYpcJ8RvnIuW7klM0guK56KGIj0E/edit?usp=sharing&ouid=106661271390326191246&rtpof=true&sd=true" data-href-el="https://docs.google.com/spreadsheets/d/1ehaNZE6X3eYZ0eenMjzU_BMmbc1qmfdv/edit?usp=sharing&ouid=106661271390326191246&rtpof=true&sd=true">Open the Tracker</a>
         </div>
       </div>
 
@@ -256,15 +259,15 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <!-- HOW TO START -->
 <section class="start">
   <div class="wrap start-in">
-    <div class="eyebrow">Αν κάνεις μόνο ένα πράγμα αυτή την εβδομάδα</div>
-    <h2>Συμπλήρωσε την Καταγραφή Δεικτών. Μία φορά.</h2>
-    <p>Παίρνει περίπου είκοσι λεπτά αν έχεις τα τιμολόγιά σου, και θα σου πει περισσότερα για την επιχείρησή σου από ό,τι ένας μήνας ανησυχίας.</p>
-    <p>Οι περισσότεροι ιδιοκτήτες ήδη υποψιάζονται πού είναι η διαρροή. <strong>Σχεδόν κανείς τους δεν έχει δίκιο.</strong> Το νούμερο που τελικά είναι το πρόβλημα σχεδόν ποτέ δεν είναι αυτό που παρακολουθούσαν.</p>
+    <div class="eyebrow">If you only do one thing this week</div>
+    <h2>Fill in the Benchmarks tracker. Once.</h2>
+    <p>It takes about twenty minutes if you have your invoices, and it will tell you more about your business than a month of worrying will.</p>
+    <p>Most owners already suspect where the leak is. <strong>Almost none of them are right.</strong> The number that turns out to be the problem is nearly never the one they were watching.</p>
 
     <div class="notes">
-      <div class="note"><b>Τα αρχεία Excel ανοίγουν παντού.</b> Excel, Google Sheets, Numbers, LibreOffice. Αν χρησιμοποιείς Google Sheets, άνοιξε το αρχείο και επίλεξε Αρχείο → Δημιουργία αντιγράφου, ώστε να δουλεύεις στη δική σου έκδοση.</div>
-      <div class="note"><b>Τα μπλε κελιά είναι δικά σου.</b> Και στα δύο υπολογιστικά φύλλα, γράφεις μόνο στα μπλε κελιά. Όλα τα υπόλοιπα υπολογίζονται μόνα τους — το να γράψεις πάνω σε έναν τύπο είναι ο μόνος τρόπος να χαλάσεις αυτά τα αρχεία.</div>
-      <div class="note"><b>Τίποτα εδώ δεν χρειάζεται λογαριασμό.</b> Χωρίς σύνδεση, χωρίς συνδρομή, χωρίς λογισμικό για εγκατάσταση. Κατέβασέ τα μία φορά και είναι δικά σου, offline, για πάντα.</div>
+      <div class="note"><b>The Excel files open anywhere.</b> Excel, Google Sheets, Numbers, LibreOffice. If you use Google Sheets, open the file and choose File → Make a copy, so you're working on your own version.</div>
+      <div class="note"><b>Blue cells are yours.</b> In both spreadsheets, you only ever type in the blue cells. Everything else calculates itself — typing over a formula is the one way to break these files.</div>
+      <div class="note"><b>Nothing here needs an account.</b> No login, no subscription, no software to install. Download them once and they're yours offline, forever.</div>
     </div>
   </div>
 </section>
@@ -272,22 +275,22 @@ footer{border-top:1px solid var(--line);padding:32px 0}
 <!-- NEXT -->
 <section class="next">
   <div class="wrap next-in">
-    <div class="soon">Έρχεται</div>
-    <h2>Το πλήρες σύστημα.</h2>
-    <p>Όλα όσα έχεις εδώ, μαζί με τις ενότητες γνώσης και τον AI σύμβουλο του OFF MENU — εκπαιδευμένο στην ίδια εμπειρία, ξύπνιο κάθε ώρα που είσαι κι εσύ. Θα το μάθεις πρώτα μέσω email.</p>
-    <p class="next-price"><b>€197</b> — και επειδή αγόρασες τον Δεκάλογο, αναβαθμίζεσαι πληρώνοντας μόνο τη διαφορά. Ό,τι πλήρωσες σήμερα πιστώνεται σε αυτό.</p>
+    <div class="soon">Coming</div>
+    <h2>The full system.</h2>
+    <p>Everything you have here, plus the knowledge modules and the OFF MENU AI advisor — trained on the same experience, awake at every hour you are. You'll hear about it by email first.</p>
+    <p class="next-price"><b>€197</b> — and because you bought the Decalogue, you upgrade at the difference. What you paid today is credited toward it.</p>
   </div>
 </section>
 
 <!-- SUPPORT -->
 <section class="support">
   <div class="wrap support-in">
-    <div class="eyebrow">Αν κάτι δεν πάει καλά</div>
-    <h2>Ρώτησέ μας. Απαντάει άνθρωπος.</h2>
-    <p>Ένα αρχείο δεν ανοίγει, ένας σύνδεσμος είναι χαλασμένος, ένα νούμερο δεν βγάζει νόημα, ή θέλεις να διαφωνήσεις με κάτι στον Δεκάλογο — όλα είναι ευπρόσδεκτα. Ειδικά το τελευταίο.</p>
+    <div class="eyebrow">If something's wrong</div>
+    <h2>Ask us. A person answers.</h2>
+    <p>A file won't open, a link is broken, a number doesn't make sense, or you want to argue with something in the Decalogue — all of it is welcome. Especially the last one.</p>
     <div class="mailbox">
       <div class="mail"><a href="mailto:team@offmenugr.com">team@offmenugr.com</a></div>
-      <div class="sub">Διαβάζουμε κάθε μήνυμα.</div>
+      <div class="sub">We read every message.</div>
     </div>
   </div>
 </section>
@@ -296,9 +299,9 @@ footer{border-top:1px solid var(--line);padding:32px 0}
   <div class="foot-in">
     <div class="foot-brand">OFF MENU</div>
     <div class="foot-links">
-      <a href="/">Αρχική</a>
-      <a href="/privacy">Απόρρητο</a>
-      <a href="/terms">Όροι</a>
+      <a href="/">Home</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Terms</a>
       <span>© 2026 OFF MENU</span>
     </div>
   </div>
@@ -529,7 +532,5 @@ syncFileLinks('en');
 })();
 </script>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;dfcaa331efb94b63a050612088555835&quot;,&quot;r&quot;:1}" crossorigin="anonymous"></script>
-
-
-</body></html>
+</body>
+</html>
