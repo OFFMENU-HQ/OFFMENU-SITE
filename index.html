@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="en">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>OFF MENU — The knowledge they don't put on the menu</title>
 <meta name="description" content="Operational knowledge for café and brunch owners. Learned inside Starbucks, KFC and Pizza Hut. Proven in our own restaurant. Start with the free guide.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=Archivo+Black&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root{
   --black:#242019;
@@ -183,7 +184,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
         <button type="button" class="lang-btn active" data-lang="en" aria-label="English" title="English">🇬🇧</button>
         <button type="button" class="lang-btn" data-lang="el" aria-label="Ελληνικά" title="Ελληνικά">🇬🇷</button>
       </div>
-      <a href="#free-gift" class="nav-cta" data-i18n-txt="">Free guide</a>
+      <a href="#free-gift" class="nav-cta" data-i18n-txt>Free guide</a>
     </div>
   </div>
 </nav>
@@ -248,11 +249,11 @@ footer{border-top:1px solid var(--line);padding:32px 0}
     <iframe name="kitTarget" id="kitTarget" title="hidden" style="display:none;width:0;height:0;border:0"></iframe>
     <form id="giftForm" method="POST" action="https://app.kit.com/forms/9655594/subscriptions" target="kitTarget">
       <div class="gift-form">
-        <input type="email" name="email_address" class="gift-input" placeholder="Your email address" required="">
+        <input type="email" name="email_address" class="gift-input" placeholder="Your email address" required>
         <button type="submit" class="gift-submit">Send it to me</button>
       </div>
       <label class="gift-consent">
-        <input type="checkbox" name="tags[]" value="20980375" required="">
+        <input type="checkbox" name="tags[]" value="20980375" required>
         <span>I agree to receive the free guide and occasional OFF MENU emails by email. I can unsubscribe at any time. See our <a href="/privacy">Privacy Policy</a> for how your data is used.</span>
       </label>
       <div class="gift-success" id="giftSuccess">Check your email to confirm — the guide is on its way.</div>
@@ -302,7 +303,7 @@ footer{border-top:1px solid var(--line);padding:32px 0}
         <div class="price-now">€29</div>
         <div class="price-then">then <s>€37</s></div>
         <div class="price-note">Founding price — early access</div>
-        <a href="https://payhip.com/buy?s=1&amp;cart_links%5B%5D=KmIZM&amp;qty%5BKmIZM%5D=1" class="btn-buy" target="_blank" rel="noopener">Get the Kickoff Bundle</a>
+        <a href="https://payhip.com/buy?s=1&cart_links%5B%5D=KmIZM&qty%5BKmIZM%5D=1" class="btn-buy" target="_blank" rel="noopener">Get the Kickoff Bundle</a>
       </div>
     </div>
   </div>
@@ -497,6 +498,10 @@ function trackEvent(name){
     en: 'https://app.kit.com/forms/9655594/subscriptions',
     el: 'https://app.kit.com/forms/9724827/subscriptions'
   };
+  var BUY_LINKS = {
+    en: 'https://payhip.com/buy?s=1&cart_links%5B%5D=KmIZM&qty%5BKmIZM%5D=1',
+    el: 'https://payhip.com/buy?s=1&cart_links%5B%5D=6CU2I&qty%5B6CU2I%5D=1'
+  };
   function setLang(lang){
     T.forEach(function(t){
       var els = document.querySelectorAll(t[0]), el = els[t[1]];
@@ -512,6 +517,9 @@ function trackEvent(name){
     });
     var giftForm = document.getElementById('giftForm');
     if(giftForm) giftForm.setAttribute('action', KIT_FORMS[lang] || KIT_FORMS.en);
+    document.querySelectorAll('.btn-buy').forEach(function(btn){
+      btn.setAttribute('href', BUY_LINKS[lang] || BUY_LINKS.en);
+    });
     document.documentElement.lang = lang;
     document.querySelectorAll('.lang-btn').forEach(function(b){
       b.classList.toggle('active', b.dataset.lang === lang);
@@ -573,7 +581,5 @@ function trackEvent(name){
   });
 })();
 </script>
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon="{&quot;version&quot;:&quot;2024.11.0&quot;,&quot;token&quot;:&quot;dfcaa331efb94b63a050612088555835&quot;,&quot;r&quot;:1}" crossorigin="anonymous"></script>
-
-
-</body></html>
+</body>
+</html>
