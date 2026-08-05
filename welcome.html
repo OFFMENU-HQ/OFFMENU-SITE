@@ -7,7 +7,7 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Manrope:wght@800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{
   --black:#242019;
@@ -21,6 +21,12 @@
   --body:'Archivo',system-ui,-apple-system,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+/* Greek-only font override — English is untouched, still Archivo/Archivo Black.
+   Manrope for headlines (forced to 800 weight, since unlike Archivo Black it
+   isn't a single fixed heavy style), Inter for body copy. */
+html[lang="el"]{--display:'Manrope',sans-serif;--body:'Inter',sans-serif;}
+html[lang="el"] .brand, html[lang="el"] .head h1, html[lang="el"] .files-head h2, html[lang="el"] .fnum, html[lang="el"] .fname, html[lang="el"] .start h2, html[lang="el"] .next h2, html[lang="el"] .next-price b, html[lang="el"] .support h2, html[lang="el"] .mailbox .mail, html[lang="el"] .foot-brand{font-weight:800 !important;}
+
 html{scroll-behavior:smooth}
 body{font-family:var(--body);background:var(--black);color:var(--bone);line-height:1.7;-webkit-font-smoothing:antialiased}
 a{color:var(--orange)}
